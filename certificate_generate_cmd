@@ -1,0 +1,28 @@
+// OTA onetimesetup
+python3 ota_onetimesetup.py -b expresslinktests3 -r us-east-2 -u Expresslink_Test_role -p Expresslink_Test_policy
+
+// *Mandatory*
+Add administrative_access in policies to this role Expresslink_Test_role from aws console
+
+// Private key generation ECDSA sha256
+openssl ecparam -name prime256v1 -genkey -noout -out private_key.pem
+
+// Pub key from private key
+openssl ec -in private_key.pem -pubout -out public_key.pem
+
+// Create ota_certificate(x509) with the private key -> CSR creat -> trustCA -> x509 certificate
+openssl req -new -x509 -key private_key.pem -out ota_certificate.pem -days 365
+
+// Sign the bin+private key = image signature
+openssl dgst -sha256 -sign private_key.pem firmware_image.bin > firmware_image.sig
+
+// Encode the signature in base64 format
+python -m base64 firmware_image.sig > firmware_image.base64
+
+// Create custom Defender metrics in iot console
+AWS IoT > Manage > Security > Detect > Metrics
+    customMetrics: list[str] = [
+        'expresslinkBytesOut', 'expresslinkMessagesSent',
+        'expresslinkMessagesReceived', 'expresslinkResets',
+        'expresslinkReconnects', 'expresslinkFlashWrites'
+    ]

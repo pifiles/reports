@@ -1,0 +1,140 @@
+# Basic test configuration
+platform: raspberry_pi
+personal_endpoint: a2m21kovu9tcsh-ats.iot.us-east-2.amazonaws.com
+
+# Claim Thing / Staging Account configuration (section 12)
+# ----
+# TODO: Add README section on how to acquire these credentials
+# The credentials which grant access to the "staging account" for the section12
+# tests. This should be your "Claim Thing" which was acquired through these steps:
+# https://iot-expresslink.awsapps.com/workdocs/index.html#/document/24b61598ead603fa155b7823de353ebed9c39edb1d3fe15ebb6057050f35e990
+# Note: These should NOT credentials to access your personal account!
+claim_private_key_path: /home/sumaji/Test/aws-client-private.pem.key
+claim_certificate_path: /home/sumaji/Test/aws-client-certificate.pem.crt
+
+# Factory device configuration commands
+# ----
+# After a device is factory reset, the config commands will be
+# issued to the device prior to running any test. They should
+# contain the minimum commands needed to successfully AT+CONNECT
+# For a wifi module, this might contain the following commands:
+# - AT+CONF SSID=example_ssid
+# - AT+CONF Passphrase=example_passphrase
+config_commands:
+  - AT
+  - AT+CONF SSID=WIFISDKroam
+  - AT+CONF Passphrase=wifisdk@2022
+
+# Optional Features
+# ----
+# We have written tests for certain optional features. Enable them as appropriate.
+
+# Tests AT+WHERE? and specific location functionality
+# Otherwise, if False, tests that AT+WHERE? is disabled
+feature_where: False
+# Tests behavior on modules with wifi capabilities
+feature_wifi: True
+# Tests behavior on modules with cellular connectivity
+feature_cellular: False
+# Tests behavior on modules with a custom OTA process
+# Otherwise, if False, tests the standard OTA process
+feature_custom_ota: False
+# Tests behavior on modules with CONFMODE available
+# Otherwise, if False, tests that AT+CONFMODE is disabled
+feature_confmode: False
+# Tests behavior on modules with BLE available
+feature_ble: False
+
+# BLE Configuration
+# ----
+
+# MAC Address of a known, connectable peer
+# During testing,
+# this device must be advertising while disconnected
+# Please set this to your device's mac address for using
+# automated bleak testing facility
+known_peer_address: 0xC5_88_39_3A_FD_1A
+
+# Custom name for testing the BLE connection
+peer_name: ELTest
+
+# The following uuids are used by the test suite to set and detect
+# the same UUID and should always be 128 bit custom UUID
+# A readable characteristic on the connectable peer
+# This example: Ruuvi Tag GENERIC ACCESS -> DEVICE NAME
+peer_service_read_uuid: 0x6E400001_B5A3_F393_E0A9_E50E24DCCA9E
+peer_characteristic_read_uuid: 0xAE400002_B5A3_F383_E0A9_E50E24DCCA9B
+
+# A writeable characteristic on the connectable peer
+# This example: Ruuvi Tag custom service
+peer_service_write_uuid: 0x6E400001_B5A3_F393_E0A9_E50E24DCCA9E
+peer_characteristic_write_uuid: 0x6E400002_B5A3_F393_E0A9_E50E24DCCA9E
+
+# A notifiable or indicatible characteristic on the connectable peer
+# The peer must send a notify/indicate shortly after subscribing
+# This example: Ruuvi Tag custom service
+peer_service_subscribe_uuid: 0x6E400001_B5A3_F393_E0A9_E50E24DCCA9E
+peer_characteristic_subscribe_uuid: 0x6E400003_B5A3_F393_E0A9_E50E24DCCA9E
+
+# OTA Configuration
+# The following configuration keys are for testing standard OTA flow.
+# ----
+
+# Path to local OTA binary
+ota_binary_path: /home/sumaji/Test/firmware_image.bin
+
+# Path to local base64-encoded OTA binary signature
+ota_signature_path: /home/sumaji/Test/firmware_image.base64
+
+# Asymmetric signature algorithm. Must be one of:
+# RSA
+# ECDSA
+# If RSA is chosen, HOTA code signing will not be performed
+ota_signature_algorithm: ECDSA
+
+# Width of the key to generate for HOTA
+# For RSA, this value is ignored
+# For ECDSA, the allowed widths are
+# 256
+# 384
+# 521
+ota_key_width: 256
+
+# Signature hash algorithm. Must be either SHA256 or SHA1
+ota_hash_algorithm: SHA256
+
+# Name of s3 bucket
+s3_bucket_name: expresslinktests3
+
+# Service role with permissions to configure and perform OTA
+service_role_arn: arn:aws:iam::037920876429:role/Expresslink_Test_role
+
+# Name of the image on S3
+s3_image_name: expresslink_firmware.bin
+
+# Name of signature file on S3
+s3_signature_path: expresslink_firmware.base64
+
+# Set to true to enable forced updating
+ota_forced_update: false
+
+# Local file path to the signing certificate used for OTA
+ota_certificate_path: /home/sumaji/Test/ota_certificate.pem
+
+# Device parameters
+# ----
+# We have written tests for certain vendor-defined behavior.
+# Configure the following to meet device specifications:
+device_max_sleep_mode: 4
+device_max_shadow: 4
+
+# number of custom MQTT topics supported by device. Must be at least 16
+device_max_topic: 16
+
+# Platform config - linuxsim
+linuxsim_config_folder: "../expresslink_firmware/reference/linuxsim"
+linuxsim_binary_path: "../expresslink_firmware/reference/linuxsim/build/expresslink_firmware"
+
+# Platform config - ftdi
+ftdi_serial_port: "/dev/your_serial_port"
+ftdi_gpio_port: "ftdi:///2"
