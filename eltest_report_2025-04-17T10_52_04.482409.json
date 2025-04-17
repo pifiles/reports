@@ -1,0 +1,2541 @@
+{
+  "created": 1744906954.7618973,
+  "duration": 1814.1209077835083,
+  "exitcode": 1,
+  "root": "/home/sumaji/Test",
+  "environment": {
+    "Python": "3.11.2",
+    "Platform": "Linux-6.6.74+rpt-rpi-v8-aarch64-with-glibc2.36",
+    "Packages": {
+      "pytest": "7.3.1",
+      "pluggy": "1.0.0"
+    },
+    "Plugins": {
+      "asyncio": "0.21.1",
+      "json-report": "1.5.0",
+      "metadata": "2.0.4"
+    }
+  },
+  "summary": {
+    "passed": 72,
+    "failed": 16,
+    "total": 88,
+    "collected": 314,
+    "deselected": 226
+  },
+  "tests": [
+    {
+      "nodeid": "tests/test_section13.py::test_13_1_1_1_bleInitCentral",
+      "lineno": 141,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_1_1_1_bleInitCentral",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 13.92433822500243,
+        "outcome": "passed",
+        "stdout": "Reseting device\n\nServer: Advertising a BLE service...\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'...\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_1_1_1_bleInitCentral\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.022192813998117344,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+BLE INIT CENTRAL\\r\\n'..\nb'Response: OK\\r\\n'\n\n"
+      },
+      "teardown": {
+        "duration": 0.0010383680019003805,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_1_1_1_bleInitPeripheral",
+      "lineno": 147,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_1_1_1_bleInitPeripheral",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 13.926848500002961,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'...\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_1_1_1_bleInitPeripheral\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.16532479300076375,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+CONF BLEGATT1={\"chr\": \"32EF00020FDF458989CAED89ECF678D7\", \"service\": \"32EF00010FDF458989CAED89ECF678D7\", \"indicate\": 1, \"write\": 1, \"read\": 1, \"notify\": 1}\\r\\n'......\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF BLEPeripheral={\"appearance\": \"0340\"}\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE INIT PERIPHERAL\\r\\n'..\nb'Response: OK\\r\\n'\n\n"
+      },
+      "teardown": {
+        "duration": 0.0009507249997113831,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_1_1_2_bleInitBadParam",
+      "lineno": 165,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_1_1_2_bleInitBadParam",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 14.81211937199987,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'.........................\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'...\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_1_1_2_bleInitBadParam\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.15276699400055804,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+BLE INIT\\r\\n'..\nb'Response: ERR4 PARAMETER ERROR\\r\\n'\n\nb'Command:  AT+BLE INIT \\r\\n'..\nb'Response: ERR4 PARAMETER ERROR\\r\\n'\n\nb'Command:  AT+BLE INIT FOO\\r\\n'..\nb'Response: ERR4 PARAMETER ERROR\\r\\n'\n\nb'Command:  AT+BLE INIT CENTRAL1\\r\\n'..\nb'Response: ERR4 PARAMETER ERROR\\r\\n'\n\nb'Command:  AT+BLE INIT PERIPHERAL1\\r\\n'..\nb'Response: ERR4 PARAMETER ERROR\\r\\n'\n\nb'Command:  AT+BLE1 INIT CENTRAL\\r\\n'..\nb'Response: ERR4 PARAMETER ERROR\\r\\n'\n\nb'Command:  AT+BLE1 INIT PERIPHERAL\\r\\n'..\nb'Response: ERR4 PARAMETER ERROR\\r\\n'\n\n"
+      },
+      "teardown": {
+        "duration": 0.0009545930006424896,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_1_1_3_bleInitMissingConfig",
+      "lineno": 184,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_1_1_3_bleInitMissingConfig",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 14.370989017999818,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'.........................\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_1_1_3_bleInitMissingConfig\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.023635249999642838,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+BLE INIT PERIPHERAL\\r\\n'..\nb'Response: ERR28 CONFIGURATION ERROR\\r\\n'\n\n"
+      },
+      "teardown": {
+        "duration": 0.0011031430003640708,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_1_1_4_bleInitAlreadyCentral",
+      "lineno": 191,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_1_1_4_bleInitAlreadyCentral",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 13.949925679000444,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'...\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_1_1_4_bleInitAlreadyCentral\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.14744665599937434,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+CONF BLEGATT1={\"chr\": \"32EF00020FDF458989CAED89ECF678D7\", \"service\": \"32EF00010FDF458989CAED89ECF678D7\"}\\r\\n'.....\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE INIT CENTRAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE INIT CENTRAL\\r\\n'..\nb'Response: ERR25 NOT ALLOWED\\r\\n'\n\nb'Command:  AT+BLE INIT PERIPHERAL\\r\\n'..\nb'Response: ERR25 NOT ALLOWED\\r\\n'\n\n"
+      },
+      "teardown": {
+        "duration": 0.0010354289988754317,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_1_1_4_bleInitAlreadyPeripheral",
+      "lineno": 200,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_1_1_4_bleInitAlreadyPeripheral",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 13.940582713999902,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'...\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_1_1_4_bleInitAlreadyPeripheral\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.1677369760000147,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+CONF BLEGATT1={\"chr\": \"32EF00020FDF458989CAED89ECF678D7\", \"service\": \"32EF00010FDF458989CAED89ECF678D7\"}\\r\\n'.....\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF BLEPeripheral={}\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE INIT PERIPHERAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE INIT PERIPHERAL\\r\\n'..\nb'Response: ERR25 NOT ALLOWED\\r\\n'\n\nb'Command:  AT+BLE INIT CENTRAL\\r\\n'..\nb'Response: ERR25 NOT ALLOWED\\r\\n'\n\n"
+      },
+      "teardown": {
+        "duration": 0.0010809310006152373,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_2_1_2_bleDiscoverClearScan",
+      "lineno": 237,
+      "outcome": "failed",
+      "keywords": [
+        "test_13_2_1_2_bleDiscoverClearScan",
+        "skipif",
+        "slow",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 14.81587179899725,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'.........................\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'...\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_2_1_2_bleDiscoverClearScan\u001b[0m\n"
+      },
+      "call": {
+        "duration": 12.426167868998164,
+        "outcome": "failed",
+        "crash": {
+          "path": "/home/sumaji/Test/tests/test_section13.py",
+          "lineno": 253,
+          "message": "AssertionError: assert None\n +  where None = get_next_event('^OK \\\\d+ \\\\d+ BLE DISCOVER COMPLETE\\\\r\\\\n', print_dots=False, timeout=10)"
+        },
+        "traceback": [
+          {
+            "path": "tests/test_section13.py",
+            "lineno": 253,
+            "message": "AssertionError"
+          }
+        ],
+        "stdout": "b'Command:  AT+CONF BLECentral1={\"peer\": \"D8:3A:DD:09:D0:45\"}\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE INIT CENTRAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER 1\\r\\n'..\nb'Response: OK\\r\\n'\n\nWaiting for DISCOVER COMPLETE event\nTimed out while waiting for an event to match: ^OK \\d+ \\d+ BLE DISCOVER COMPLETE\\r\\n\n",
+        "longrepr": "@pytest.mark.slow\n    @pytest.mark.skipif(not cf.get('feature_ble', bool), reason='BLE unavailable')\n    def test_13_2_1_2_bleDiscoverClearScan() -> None:\n        # filter to a single device, discard duplicates\n        config = _get_gap_config()\n        assert cmd(f'AT+CONF BLECentral1={json.dumps(config)}\\r\\n') == 'OK\\r\\n'\n        assert cmd('AT+BLE INIT CENTRAL\\r\\n') == 'OK\\r\\n'\n    \n        # Start multiple discovers, but don't allow previous discovers to finish\n        for _ in range(100):\n            assert cmd('AT+BLE1 DISCOVER\\r\\n') == 'OK\\r\\n'\n        assert cmd('AT+BLE1 DISCOVER 1\\r\\n')\n    \n        # Only one discover operation should complete\n        print(\"Waiting for DISCOVER COMPLETE event\")\n>       assert get_next_event(r'^OK \\d+ \\d+ BLE DISCOVER COMPLETE\\r\\n',\n                              print_dots=False,\n                              timeout=10)\nE       AssertionError: assert None\nE        +  where None = get_next_event('^OK \\\\d+ \\\\d+ BLE DISCOVER COMPLETE\\\\r\\\\n', print_dots=False, timeout=10)\n\ntests/test_section13.py:253: AssertionError"
+      },
+      "teardown": {
+        "duration": 0.0005815040021843743,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_2_1_3_bleDiscoverDuration",
+      "lineno": 262,
+      "outcome": "failed",
+      "keywords": [
+        "test_13_2_1_3_bleDiscoverDuration",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 14.364643150001939,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'.........................\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_2_1_3_bleDiscoverDuration\u001b[0m\n"
+      },
+      "call": {
+        "duration": 16.178545287002635,
+        "outcome": "failed",
+        "crash": {
+          "path": "/home/sumaji/Test/tests/test_section13.py",
+          "lineno": 275,
+          "message": "AssertionError: assert None\n +  where None = get_next_event('^OK \\\\d+ \\\\d+ BLE DISCOVER COMPLETE\\\\r\\\\n', print_dots=False, timeout=(5 * 3))"
+        },
+        "traceback": [
+          {
+            "path": "tests/test_section13.py",
+            "lineno": 275,
+            "message": "AssertionError"
+          }
+        ],
+        "stdout": "b'Command:  AT+CONF BLECentral1={\"peer\": \"D8:3A:DD:09:D0:45\", \"filterDups\": 1}\\r\\n'....\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE INIT CENTRAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER 5\\r\\n'..\nb'Response: OK\\r\\n'\n\nWaiting for DISCOVER COMPLETE event\nTimed out while waiting for an event to match: ^OK \\d+ \\d+ BLE DISCOVER COMPLETE\\r\\n\n",
+        "longrepr": "@pytest.mark.skipif(not cf.get('feature_ble', bool), reason='BLE unavailable')\n    def test_13_2_1_3_bleDiscoverDuration() -> None:\n        # Filter to a single address and filter duplicates to ensure\n        # backing memory for GET DISCOVER messages does not overrun.\n        config = _get_gap_config()\n        config['filterDups'] = 1\n        assert cmd(f'AT+CONF BLECentral1={json.dumps(config)}\\r\\n') == 'OK\\r\\n'\n        assert cmd('AT+BLE INIT CENTRAL\\r\\n') == 'OK\\r\\n'\n        expectedDuration = 5\n        assert cmd(f'AT+BLE1 DISCOVER {expectedDuration}\\r\\n') == 'OK\\r\\n'\n        t1 = time.time()\n        print('Waiting for DISCOVER COMPLETE event')\n>       assert get_next_event(r'^OK \\d+ \\d+ BLE DISCOVER COMPLETE\\r\\n',\n                              print_dots=False,\n                              timeout=expectedDuration * 3)\nE       AssertionError: assert None\nE        +  where None = get_next_event('^OK \\\\d+ \\\\d+ BLE DISCOVER COMPLETE\\\\r\\\\n', print_dots=False, timeout=(5 * 3))\n\ntests/test_section13.py:275: AssertionError"
+      },
+      "teardown": {
+        "duration": 0.0006081139981688466,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_2_1_4_bleDiscoverCompleteEvent",
+      "lineno": 284,
+      "outcome": "failed",
+      "keywords": [
+        "test_13_2_1_4_bleDiscoverCompleteEvent",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 13.932184673001757,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'...\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_2_1_4_bleDiscoverCompleteEvent\u001b[0m\n"
+      },
+      "call": {
+        "duration": 6.085984705998271,
+        "outcome": "failed",
+        "crash": {
+          "path": "/home/sumaji/Test/tests/test_section13.py",
+          "lineno": 291,
+          "message": "AssertionError: assert None\n +  where None = get_next_event('OK 41 0 BLE DISCOVER COMPLETE\\r\\n', print_dots=False, timeout=6)"
+        },
+        "traceback": [
+          {
+            "path": "tests/test_section13.py",
+            "lineno": 291,
+            "message": "AssertionError"
+          }
+        ],
+        "stdout": "b'Command:  AT+CONF BLECentral1={}\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE INIT CENTRAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER 3\\r\\n'..\nb'Response: OK\\r\\n'\n\nWaiting for discover complete event\nTimed out while waiting for an event to match: OK 41 0 BLE DISCOVER COMPLETE\r\n\n",
+        "longrepr": "@pytest.mark.skipif(not cf.get('feature_ble', bool), reason='BLE unavailable')\n    def test_13_2_1_4_bleDiscoverCompleteEvent() -> None:\n        assert cmd('AT+CONF BLECentral1={}\\r\\n') == 'OK\\r\\n'\n        assert cmd('AT+BLE INIT CENTRAL\\r\\n') == 'OK\\r\\n'\n        assert cmd('AT+BLE1 DISCOVER 3\\r\\n') == 'OK\\r\\n'\n        print('Waiting for discover complete event')\n>       assert get_next_event('OK 41 0 BLE DISCOVER COMPLETE\\r\\n',\n                              print_dots=False,\n                              timeout=6)\nE       AssertionError: assert None\nE        +  where None = get_next_event('OK 41 0 BLE DISCOVER COMPLETE\\r\\n', print_dots=False, timeout=6)\n\ntests/test_section13.py:291: AssertionError"
+      },
+      "teardown": {
+        "duration": 0.0005776649995823391,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_2_1_7_bleDiscoverOk",
+      "lineno": 305,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_2_1_7_bleDiscoverOk",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 13.951854721999553,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'...\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_2_1_7_bleDiscoverOk\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.0637157719975221,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+CONF BLECentral1={}\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE INIT CENTRAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\n"
+      },
+      "teardown": {
+        "duration": 0.0008981190003396478,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_2_1_8_bleDiscoverCancel",
+      "lineno": 316,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_2_1_8_bleDiscoverCancel",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 14.806970323999849,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'.........................\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'...\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_2_1_8_bleDiscoverCancel\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.14901365200057626,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+CONF BLECentral1={}\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF BLECentral2={}\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE INIT CENTRAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER CANCEL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE2 DISCOVER CANCEL\\r\\n'..\nb'Response: OK\\r\\n'\n\n"
+      },
+      "teardown": {
+        "duration": 0.0008977090001280885,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_2_1_9_bleDiscoverRequiresDuration",
+      "lineno": 329,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_2_1_9_bleDiscoverRequiresDuration",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 14.369148970999959,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'.........................\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_2_1_9_bleDiscoverRequiresDuration\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.0757892149995314,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+CONF BLECentral1={}\\r\\n'.\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE INIT CENTRAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER \\r\\n'..\nb'Response: ERR4 PARAMETER ERROR\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER 0\\r\\n'..\nb'Response: ERR4 PARAMETER ERROR\\r\\n'\n\n"
+      },
+      "teardown": {
+        "duration": 0.0010091240001202095,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_2_1_10_bleDiscoverRequiresConnectionIndex",
+      "lineno": 339,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_2_1_10_bleDiscoverRequiresConnectionIndex",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 13.947478840000258,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'...\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_2_1_10_bleDiscoverRequiresConnectionIndex\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.04405993099862826,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+BLE INIT CENTRAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE DISCOVER\\r\\n'..\nb'Response: ERR4 PARAMETER ERROR\\r\\n'\n\n"
+      },
+      "teardown": {
+        "duration": 0.0009958059999917168,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_2_1_11_bleDiscoverOutOfRange",
+      "lineno": 347,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_2_1_11_bleDiscoverOutOfRange",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 13.939093760000105,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'...\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_2_1_11_bleDiscoverOutOfRange\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.06507766499998979,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+BLE INIT CENTRAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE0 DISCOVER\\r\\n'..\nb'Response: ERR7 OUT OF RANGE\\r\\n'\n\nb'Command:  AT+BLE512 DISCOVER\\r\\n'..\nb'Response: ERR7 OUT OF RANGE\\r\\n'\n\n"
+      },
+      "teardown": {
+        "duration": 0.0008801089970802423,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_2_1_12_bleDiscoverRequiresConfig",
+      "lineno": 356,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_2_1_12_bleDiscoverRequiresConfig",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 14.78792892400088,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'.........................\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'...\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_2_1_12_bleDiscoverRequiresConfig\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.06582908099881024,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+BLE INIT CENTRAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: ERR8 PARAMETER UNDEFINED\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER 1\\r\\n'..\nb'Response: ERR8 PARAMETER UNDEFINED\\r\\n'\n\n"
+      },
+      "teardown": {
+        "duration": 0.000935815001867013,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_2_1_13_bleDiscoverNotCentral",
+      "lineno": 365,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_2_1_13_bleDiscoverNotCentral",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 14.383910123000533,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'.........................\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_2_1_13_bleDiscoverNotCentral\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.23168374099986977,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+CONF BLECentral1={}\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: ERR25 NOT ALLOWED\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER 30\\r\\n'..\nb'Response: ERR25 NOT ALLOWED\\r\\n'\n\nb'Command:  AT+CONF BLEGATT1={\"chr\": \"32EF00020FDF458989CAED89ECF678D7\", \"service\": \"32EF00010FDF458989CAED89ECF678D7\"}\\r\\n'.....\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF BLEPeripheral={}\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE INIT PERIPHERAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER\\r\\n'..\nb'Response: ERR25 NOT ALLOWED\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER 30\\r\\n'..\nb'Response: ERR25 NOT ALLOWED\\r\\n'\n\n"
+      },
+      "teardown": {
+        "duration": 0.0010399699967820197,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_2_2_1_bleGetDiscoverEmpty",
+      "lineno": 425,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_2_2_1_bleGetDiscoverEmpty",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 13.93519826299962,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'...\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_2_2_1_bleGetDiscoverEmpty\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.04310925000027055,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+BLE INIT CENTRAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE GET DISCOVER\\r\\n'..\nb'Response: OK\\r\\n'\n\n"
+      },
+      "teardown": {
+        "duration": 0.0008128020017466042,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_2_2_2_bleDiscoverResponse",
+      "lineno": 434,
+      "outcome": "failed",
+      "keywords": [
+        "test_13_2_2_2_bleDiscoverResponse",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 13.9376775310011,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'...\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_2_2_2_bleDiscoverResponse\u001b[0m\n"
+      },
+      "call": {
+        "duration": 10.147119555000245,
+        "outcome": "failed",
+        "crash": {
+          "path": "/home/sumaji/Test/tests/test_section13.py",
+          "lineno": 443,
+          "message": "AssertionError: assert None\n +  where None = get_next_event('OK \\\\d+ \\\\d+ BLE DISCOVER COMPLETE\\\\r\\\\n', print_dots=False, timeout=10)"
+        },
+        "traceback": [
+          {
+            "path": "tests/test_section13.py",
+            "lineno": 443,
+            "message": "AssertionError"
+          }
+        ],
+        "stdout": "b'Command:  AT+CONF BLECentral1={\"peer\": \"D8:3A:DD:09:D0:45\", \"filterDups\": 1}\\r\\n'....\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE INIT CENTRAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCOVER 5\\r\\n'..\nb'Response: OK\\r\\n'\n\nTimed out while waiting for an event to match: OK \\d+ \\d+ BLE DISCOVER COMPLETE\\r\\n\n",
+        "longrepr": "@pytest.mark.skipif(not cf.get('feature_ble', bool), reason='BLE unavailable')\n    def test_13_2_2_2_bleDiscoverResponse() -> None:\n        config = _get_gap_config()\n        config['filterDups'] = 1\n        # filter to a single device, discard duplicates\n        assert cmd(f'AT+CONF BLECentral1={json.dumps(config)}\\r\\n') == 'OK\\r\\n'\n        assert cmd('AT+BLE INIT CENTRAL\\r\\n') == 'OK\\r\\n'\n        assert cmd('AT+BLE1 DISCOVER 5\\r\\n') == 'OK\\r\\n'\n>       assert get_next_event(r'OK \\d+ \\d+ BLE DISCOVER COMPLETE\\r\\n',\n                              print_dots=False,\n                              timeout=10)\nE       AssertionError: assert None\nE        +  where None = get_next_event('OK \\\\d+ \\\\d+ BLE DISCOVER COMPLETE\\\\r\\\\n', print_dots=False, timeout=10)\n\ntests/test_section13.py:443: AssertionError"
+      },
+      "teardown": {
+        "duration": 0.0005731520031986292,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_2_2_3_bleGetDiscoverNotCentral",
+      "lineno": 451,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_2_2_3_bleGetDiscoverNotCentral",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 14.816601739999896,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'.........................\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'...\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_2_2_3_bleGetDiscoverNotCentral\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.167556626998703,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+BLE GET DISCOVER\\r\\n'..\nb'Response: ERR25 NOT ALLOWED\\r\\n'\n\nb'Command:  AT+CONF BLEGATT1={\"chr\": \"32EF00020FDF458989CAED89ECF678D7\", \"service\": \"32EF00010FDF458989CAED89ECF678D7\"}\\r\\n'.....\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF BLEPeripheral={}\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE INIT PERIPHERAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE GET DISCOVER\\r\\n'..\nb'Response: ERR25 NOT ALLOWED\\r\\n'\n\n"
+      },
+      "teardown": {
+        "duration": 0.0008982480030681472,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_2_3_1_bleConnect",
+      "lineno": 487,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_2_3_1_bleConnect",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 14.36481676800031,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'.........................\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_2_3_1_bleConnect\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.15724518299975898,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+CONF BLECentral1={\"peer\": \"D8:3A:DD:09:D0:45\"}\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE INIT CENTRAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 CONNECT\\r\\n'.....\nb'Response: ERR14 UNABLE TO CONNECT\\r\\n'\n\nb'Command:  AT+BLE1 CONNECT\\r\\n'..\nb'Response: OK\\r\\n'\n\n"
+      },
+      "teardown": {
+        "duration": 0.00101379100306076,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_2_2_bleConnectOutOfRange",
+      "lineno": 497,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_2_2_bleConnectOutOfRange",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 13.95138298600068,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'...\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_2_2_bleConnectOutOfRange\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.06499056599932374,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+BLE INIT CENTRAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE0 CONNECT\\r\\n'..\nb'Response: ERR7 OUT OF RANGE\\r\\n'\n\nb'Command:  AT+BLE255 CONNECT\\r\\n'..\nb'Response: ERR7 OUT OF RANGE\\r\\n'\n\n"
+      },
+      "teardown": {
+        "duration": 0.0009734169980220031,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_2_3_3_bleConnectNotDescribed",
+      "lineno": 506,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_2_3_3_bleConnectNotDescribed",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 13.921355333000974,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'...\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_2_3_3_bleConnectNotDescribed\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.1279405429995677,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+CONF BLECentral1={}\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE INIT CENTRAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 CONNECT\\r\\n'..\nb'Response: ERR28 CONFIGURATION ERROR\\r\\n'\n\nb'Command:  AT+CONF BLECentral1={\"filterDups\": 1}\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 CONNECT\\r\\n'..\nb'Response: ERR28 CONFIGURATION ERROR\\r\\n'\n\n"
+      },
+      "teardown": {
+        "duration": 0.0008997249969979748,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_2_3_4_bleConnectNotConfigured",
+      "lineno": 520,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_2_3_4_bleConnectNotConfigured",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 14.788578028001211,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'.........................\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'...\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_2_3_4_bleConnectNotConfigured\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.04431386800206383,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+BLE INIT CENTRAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 CONNECT\\r\\n'..\nb'Response: ERR8 PARAMETER UNDEFINED\\r\\n'\n\n"
+      },
+      "teardown": {
+        "duration": 0.0009928969993779901,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_2_3_5_bleConnectAlready",
+      "lineno": 529,
+      "outcome": "failed",
+      "keywords": [
+        "test_13_2_3_5_bleConnectAlready",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 14.361095889998978,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'.........................\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_2_3_5_bleConnectAlready\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.17758547499761335,
+        "outcome": "failed",
+        "crash": {
+          "path": "/home/sumaji/Test/tests/test_section13.py",
+          "lineno": 536,
+          "message": "AssertionError: assert 'OK\\r\\n' == 'ERR25 NOT ALLOWED\\r\\n'\n  - ERR25 NOT ALLOWED\r\n  + OK"
+        },
+        "traceback": [
+          {
+            "path": "tests/test_section13.py",
+            "lineno": 536,
+            "message": "AssertionError"
+          }
+        ],
+        "stdout": "b'Command:  AT+CONF BLECentral1={\"peer\": \"D8:3A:DD:09:D0:45\"}\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE INIT CENTRAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 CONNECT\\r\\n'....\nb'Response: ERR14 UNABLE TO CONNECT\\r\\n'\n\nb'Command:  AT+BLE1 CONNECT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 CONNECT\\r\\n'..\nb'Response: OK\\r\\n'\n\n",
+        "longrepr": "@pytest.mark.skipif(not cf.get('feature_ble', bool), reason='BLE unavailable')\n    def test_13_2_3_5_bleConnectAlready() -> None:\n        config = _get_gap_config()\n        assert cmd(f'AT+CONF BLECentral1={json.dumps(config)}\\r\\n') == 'OK\\r\\n'\n        assert cmd('AT+BLE INIT CENTRAL\\r\\n') == 'OK\\r\\n'\n        _ble_connect_with_retries()\n>       assert cmd('AT+BLE1 CONNECT\\r\\n', timeout=60) == 'ERR25 NOT ALLOWED\\r\\n'\nE       AssertionError: assert 'OK\\r\\n' == 'ERR25 NOT ALLOWED\\r\\n'\nE         - ERR25 NOT ALLOWED\r\nE         + OK\n\ntests/test_section13.py:536: AssertionError"
+      },
+      "teardown": {
+        "duration": 0.0008694800017110538,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_2_3_6_bleConnectNotCentral",
+      "lineno": 540,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_2_3_6_bleConnectNotCentral",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 13.920391259998723,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'...\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_2_3_6_bleConnectNotCentral\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.2096587689993612,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+CONF BLECentral1={\"peer\": \"D8:3A:DD:09:D0:45\"}\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 CONNECT\\r\\n'..\nb'Response: ERR25 NOT ALLOWED\\r\\n'\n\nb'Command:  AT+CONF BLEGATT1={\"chr\": \"32EF00020FDF458989CAED89ECF678D7\", \"service\": \"32EF00010FDF458989CAED89ECF678D7\"}\\r\\n'.....\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF BLEPeripheral={}\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE INIT PERIPHERAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 CONNECT\\r\\n'..\nb'Response: ERR25 NOT ALLOWED\\r\\n'\n\n"
+      },
+      "teardown": {
+        "duration": 0.0010500450007384643,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_2_3_7_bleConnectTimeout",
+      "lineno": 554,
+      "outcome": "failed",
+      "keywords": [
+        "test_13_2_3_7_bleConnectTimeout",
+        "skipif",
+        "slow",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 13.943240941000113,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'...\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_2_3_7_bleConnectTimeout\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.13636431700069807,
+        "outcome": "failed",
+        "crash": {
+          "path": "/home/sumaji/Test/tests/test_section13.py",
+          "lineno": 565,
+          "message": "assert 0.07104969024658203 == 30 \u00b1 5.0e+00\n  comparison failed\n  Obtained: 0.07104969024658203\n  Expected: 30 \u00b1 5.0e+00"
+        },
+        "traceback": [
+          {
+            "path": "tests/test_section13.py",
+            "lineno": 565,
+            "message": "AssertionError"
+          }
+        ],
+        "stdout": "b'Command:  AT+CONF BLECentral1={\"peer\": \"00:11:22:33:DC:BA\"}\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE INIT CENTRAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 CONNECT\\r\\n'....\nb'Response: ERR14 UNABLE TO CONNECT\\r\\n'\n\n",
+        "longrepr": "@pytest.mark.slow\n    @pytest.mark.skipif(not cf.get('feature_ble', bool), reason='BLE unavailable')\n    def test_13_2_3_7_bleConnectTimeout() -> None:\n        config = GapConfig(peer=_hex_to_mac(0x00_11_22_33_DC_BA))\n        assert cmd(f'AT+CONF BLECentral1={json.dumps(config)}\\r\\n') == 'OK\\r\\n'\n        assert cmd('AT+BLE INIT CENTRAL\\r\\n') == 'OK\\r\\n'\n        t1 = time.time()\n        assert cmd('AT+BLE1 CONNECT\\r\\n',\n                   timeout=60) == 'ERR14 UNABLE TO CONNECT\\r\\n'\n        t2 = time.time()\n>       assert (t2 - t1) == pytest.approx(30, abs=5)\nE       assert 0.07104969024658203 == 30 \u00b1 5.0e+00\nE         comparison failed\nE         Obtained: 0.07104969024658203\nE         Expected: 30 \u00b1 5.0e+00\n\ntests/test_section13.py:565: AssertionError"
+      },
+      "teardown": {
+        "duration": 0.000575459998799488,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_2_4_2_centralConnectQueryConnected",
+      "lineno": 577,
+      "outcome": "failed",
+      "keywords": [
+        "test_13_2_4_2_centralConnectQueryConnected",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 14.797696360001282,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'.........................\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'...\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_2_4_2_centralConnectQueryConnected\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.17907601699698716,
+        "outcome": "failed",
+        "crash": {
+          "path": "/home/sumaji/Test/tests/test_section13.py",
+          "lineno": 584,
+          "message": "AssertionError: assert 'OK 0 DISCONNECTED\\r\\n' == 'OK 1 CONNECTED\\r\\n'\n  - OK 1 CONNECTED\r\n  ?    ^^\n  + OK 0 DISCONNECTED\r\n  ?    ^^^^^"
+        },
+        "traceback": [
+          {
+            "path": "tests/test_section13.py",
+            "lineno": 584,
+            "message": "AssertionError"
+          }
+        ],
+        "stdout": "b'Command:  AT+CONF BLECentral1={\"peer\": \"D8:3A:DD:09:D0:45\"}\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE INIT CENTRAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 CONNECT\\r\\n'....\nb'Response: ERR14 UNABLE TO CONNECT\\r\\n'\n\nb'Command:  AT+BLE1 CONNECT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 CONNECT?\\r\\n'..\nb'Response: OK 0 DISCONNECTED\\r\\n'\n\n",
+        "longrepr": "@pytest.mark.skipif(not cf.get('feature_ble', bool), reason='BLE unavailable')\n    def test_13_2_4_2_centralConnectQueryConnected() -> None:\n        assert cmd(\n            f'AT+CONF BLECentral1={json.dumps(_get_gap_config())}\\r\\n') == 'OK\\r\\n'\n        assert cmd('AT+BLE INIT CENTRAL\\r\\n') == 'OK\\r\\n'\n        _ble_connect_with_retries()\n>       assert cmd('AT+BLE1 CONNECT?\\r\\n') == 'OK 1 CONNECTED\\r\\n'\nE       AssertionError: assert 'OK 0 DISCONNECTED\\r\\n' == 'OK 1 CONNECTED\\r\\n'\nE         - OK 1 CONNECTED\r\nE         ?    ^^\nE         + OK 0 DISCONNECTED\r\nE         ?    ^^^^^\n\ntests/test_section13.py:584: AssertionError"
+      },
+      "teardown": {
+        "duration": 0.0005863299993507098,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_2_4_3_centralConnectQueryDisconnected",
+      "lineno": 588,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_2_4_3_centralConnectQueryDisconnected",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 14.361322294000274,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'.........................\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_2_4_3_centralConnectQueryDisconnected\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.06484726600319846,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+CONF BLECentral1={}\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE INIT CENTRAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 CONNECT?\\r\\n'..\nb'Response: OK 0 DISCONNECTED\\r\\n'\n\n"
+      },
+      "teardown": {
+        "duration": 0.0009855729986156803,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_2_4_4_centralConnectQueryBadIndex",
+      "lineno": 597,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_2_4_4_centralConnectQueryBadIndex",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 13.951431258999946,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'...\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_2_4_4_centralConnectQueryBadIndex\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.06566044500141288,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+BLE INIT CENTRAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE0 CONNECT?\\r\\n'..\nb'Response: ERR7 OUT OF RANGE\\r\\n'\n\nb'Command:  AT+BLE512 CONNECT?\\r\\n'..\nb'Response: ERR7 OUT OF RANGE\\r\\n'\n\n"
+      },
+      "teardown": {
+        "duration": 0.0010332409983675461,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_2_4_5_connectQueryIndexAsPeripheral",
+      "lineno": 606,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_2_4_5_connectQueryIndexAsPeripheral",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 13.917751596000016,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'...\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_2_4_5_connectQueryIndexAsPeripheral\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.1466933859992423,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+CONF BLEGATT1={\"chr\": \"32EF00020FDF458989CAED89ECF678D7\", \"service\": \"32EF00010FDF458989CAED89ECF678D7\"}\\r\\n'.....\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF BLEPeripheral={}\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE INIT PERIPHERAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 CONNECT?\\r\\n'..\nb'Response: ERR25 NOT ALLOWED\\r\\n'\n\n"
+      },
+      "teardown": {
+        "duration": 0.0011127260004286654,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_2_5_1_centralDisconnectDisconnects",
+      "lineno": 619,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_2_5_1_centralDisconnectDisconnects",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 14.824932506999176,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'........................\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'...\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_2_5_1_centralDisconnectDisconnects\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.19820388800144428,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+CONF BLECentral1={\"peer\": \"D8:3A:DD:09:D0:45\"}\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE INIT CENTRAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 CONNECT\\r\\n'....\nb'Response: ERR14 UNABLE TO CONNECT\\r\\n'\n\nb'Command:  AT+BLE1 CONNECT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCONNECT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 CONNECT?\\r\\n'..\nb'Response: OK 0 DISCONNECTED\\r\\n'\n\n"
+      },
+      "teardown": {
+        "duration": 0.0010497580005903728,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_2_5_2_centralDisconnectOk",
+      "lineno": 631,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_2_5_2_centralDisconnectOk",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 14.362527219000185,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'.........................\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_2_5_2_centralDisconnectOk\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.04310680699927616,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+BLE INIT CENTRAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCONNECT\\r\\n'..\nb'Response: OK\\r\\n'\n\n"
+      },
+      "teardown": {
+        "duration": 0.0009985500000766478,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_2_5_3_centralDisconnectBadIndex",
+      "lineno": 639,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_2_5_3_centralDisconnectBadIndex",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 13.92442772099821,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'...\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_2_5_3_centralDisconnectBadIndex\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.06547476499690674,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+BLE INIT CENTRAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE0 DISCONNECT\\r\\n'..\nb'Response: ERR7 OUT OF RANGE\\r\\n'\n\nb'Command:  AT+BLE512 DISCONNECT\\r\\n'..\nb'Response: ERR7 OUT OF RANGE\\r\\n'\n\n"
+      },
+      "teardown": {
+        "duration": 0.0011035360003006645,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_2_5_5_centralDisconnectNotCentral",
+      "lineno": 652,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_2_5_5_centralDisconnectNotCentral",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 13.923556313999143,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'.\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'...\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_2_5_5_centralDisconnectNotCentral\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.06453981000231579,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+CONF BLECentral1={\"peer\": \"D8:3A:DD:09:D0:45\"}\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 DISCONNECT\\r\\n'..\nb'Response: ERR25 NOT ALLOWED\\r\\n'\n\n"
+      },
+      "teardown": {
+        "duration": 0.0010922010005742777,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_2_6_1_bleReadHexPayload",
+      "lineno": 667,
+      "outcome": "failed",
+      "keywords": [
+        "test_13_2_6_1_bleReadHexPayload",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 14.797430216000066,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'.........................\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'...\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_2_6_1_bleReadHexPayload\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.2587771189973864,
+        "outcome": "failed",
+        "crash": {
+          "path": "/home/sumaji/Test/tests/test_section13.py",
+          "lineno": 679,
+          "message": "assert None"
+        },
+        "traceback": [
+          {
+            "path": "tests/test_section13.py",
+            "lineno": 679,
+            "message": "AssertionError"
+          }
+        ],
+        "stdout": "b'Command:  AT+CONF BLECentral1={\"peer\": \"D8:3A:DD:09:D0:45\"}\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF BLEGATT1={\"chr\": \"AE400002B5A3F383E0A9E50E24DCCA9B\", \"service\": \"6E400001B5A3F393E0A9E50E24DCCA9E\"}\\r\\n'.....\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE INIT CENTRAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 CONNECT\\r\\n'....\nb'Response: ERR14 UNABLE TO CONNECT\\r\\n'\n\nb'Command:  AT+BLE1 CONNECT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 READ1\\r\\n'..\nb'Response: ERR6 NO CONNECTION\\r\\n'\n\n",
+        "longrepr": "@pytest.mark.skipif(not cf.get('feature_ble', bool), reason='BLE unavailable')\n    def test_13_2_6_1_bleReadHexPayload() -> None:\n        assert cmd(f'AT+CONF BLECentral1={json.dumps(_get_gap_config())}\\r\\n')\n        config = GattConfig(\n            chr=_hex_to_uuid(cf.get('peer_characteristic_read_uuid', int)),\n            service=_hex_to_uuid(cf.get('peer_service_read_uuid', int)))\n        assert cmd(f'AT+CONF BLEGATT1={json.dumps(config)}\\r\\n') == 'OK\\r\\n'\n        assert cmd('AT+BLE INIT CENTRAL\\r\\n') == 'OK\\r\\n'\n        _ble_connect_with_retries()\n        match = re.match(r'^OK ([a-zA-Z0-9]{0,1024})\\r\\n$',\n                         cmd('AT+BLE1 READ1\\r\\n'))\n>       assert match\nE       assert None\n\ntests/test_section13.py:679: AssertionError"
+      },
+      "teardown": {
+        "duration": 0.0005688040000677574,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_2_6_3_bleReadCentralUndefined",
+      "lineno": 691,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_2_6_3_bleReadCentralUndefined",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 14.370758666002075,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'.........................\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_2_6_3_bleReadCentralUndefined\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.2582206570004928,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+CONF BLECentral1={\"peer\": \"D8:3A:DD:09:D0:45\"}\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF BLEGATT1={\"service\": \"32EF00010FDF458989CAED89ECF678D7\", \"chr\": \"32EF00020FDF458989CAED89ECF678D7\"}\\r\\n'.....\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE INIT CENTRAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 CONNECT\\r\\n'....\nb'Response: ERR14 UNABLE TO CONNECT\\r\\n'\n\nb'Command:  AT+BLE1 CONNECT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE2 READ1\\r\\n'..\nb'Response: ERR8 PARAMETER UNDEFINED\\r\\n'\n\n"
+      },
+      "teardown": {
+        "duration": 0.0010675480007193983,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_2_6_3_bleReadGattUndefined",
+      "lineno": 703,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_2_6_3_bleReadGattUndefined",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 13.941852136998932,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'...\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_2_6_3_bleReadGattUndefined\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.17829405100201257,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+CONF BLECentral1={\"peer\": \"D8:3A:DD:09:D0:45\"}\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE INIT CENTRAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 CONNECT\\r\\n'....\nb'Response: ERR14 UNABLE TO CONNECT\\r\\n'\n\nb'Command:  AT+BLE1 CONNECT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 READ1\\r\\n'..\nb'Response: ERR8 PARAMETER UNDEFINED\\r\\n'\n\n"
+      },
+      "teardown": {
+        "duration": 0.0010197670017078053,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_2_6_6_bleReadOutOfRange",
+      "lineno": 717,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_2_6_6_bleReadOutOfRange",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 13.915008103998844,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'...\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_2_6_6_bleReadOutOfRange\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.41137312299906625,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+CONF BLECentral1={\"peer\": \"D8:3A:DD:09:D0:45\"}\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF BLEGATT1={\"chr\": \"AE400002B5A3F383E0A9E50E24DCCA9B\", \"service\": \"6E400001B5A3F393E0A9E50E24DCCA9E\"}\\r\\n'.....\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE INIT CENTRAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 CONNECT\\r\\n'....\nb'Response: ERR14 UNABLE TO CONNECT\\r\\n'\n\nb'Command:  AT+BLE1 CONNECT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE0 READ1\\r\\n'..\nb'Response: ERR7 OUT OF RANGE\\r\\n'\n\nb'Command:  AT+BLE512 READ1\\r\\n'..\nb'Response: ERR7 OUT OF RANGE\\r\\n'\n\nb'Command:  AT+BLE1 READ0\\r\\n'..\nb'Response: ERR7 OUT OF RANGE\\r\\n'\n\nb'Command:  AT+BLE0 READ0\\r\\n'..\nb'Response: ERR7 OUT OF RANGE\\r\\n'\n\nb'Command:  AT+BLE512 READ0\\r\\n'..\nb'Response: ERR7 OUT OF RANGE\\r\\n'\n\nb'Command:  AT+BLE1 READ512\\r\\n'..\nb'Response: ERR7 OUT OF RANGE\\r\\n'\n\nb'Command:  AT+BLE0 READ512\\r\\n'..\nb'Response: ERR7 OUT OF RANGE\\r\\n'\n\nb'Command:  AT+BLE512 READ512\\r\\n'..\nb'Response: ERR7 OUT OF RANGE\\r\\n'\n\n"
+      },
+      "teardown": {
+        "duration": 0.0008865750023687724,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_2_6_7_bleReadNoConnection",
+      "lineno": 735,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_2_6_7_bleReadNoConnection",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 14.81361312199806,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'.........................\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'...\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_2_6_7_bleReadNoConnection\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.16727402499964228,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+CONF BLECentral1={\"peer\": \"D8:3A:DD:09:D0:45\"}\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF BLEGATT1={\"chr\": \"AE400002B5A3F383E0A9E50E24DCCA9B\", \"service\": \"6E400001B5A3F393E0A9E50E24DCCA9E\"}\\r\\n'.....\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE INIT CENTRAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 READ1\\r\\n'..\nb'Response: ERR6 NO CONNECTION\\r\\n'\n\n"
+      },
+      "teardown": {
+        "duration": 0.0008929079995141365,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_2_6_9_bleReadNotCentral",
+      "lineno": 752,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_2_6_9_bleReadNotCentral",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 14.368578084999172,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'.........................\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_2_6_9_bleReadNotCentral\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.21044088500275393,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+CONF BLECentral1={\"peer\": \"D8:3A:DD:09:D0:45\"}\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF BLEGATT1={\"chr\": \"AE400002B5A3F383E0A9E50E24DCCA9B\", \"service\": \"6E400001B5A3F393E0A9E50E24DCCA9E\"}\\r\\n'.....\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 READ1\\r\\n'..\nb'Response: ERR25 NOT ALLOWED\\r\\n'\n\nb'Command:  AT+CONF BLEPeripheral={}\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE INIT PERIPHERAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 READ1\\r\\n'..\nb'Response: ERR25 NOT ALLOWED\\r\\n'\n\n"
+      },
+      "teardown": {
+        "duration": 0.0010343949979869649,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_2_7_1_bleWrite",
+      "lineno": 776,
+      "outcome": "failed",
+      "keywords": [
+        "test_13_2_7_1_bleWrite",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 13.942078577001666,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'...\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_2_7_1_bleWrite\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.259145357998932,
+        "outcome": "failed",
+        "crash": {
+          "path": "/home/sumaji/Test/tests/test_section13.py",
+          "lineno": 786,
+          "message": "AssertionError: assert 'ERR6 NO CONNECTION\\r\\n' == 'OK\\r\\n'\n  - OK\r\n  + ERR6 NO CONNECTION"
+        },
+        "traceback": [
+          {
+            "path": "tests/test_section13.py",
+            "lineno": 786,
+            "message": "AssertionError"
+          }
+        ],
+        "stdout": "b'Command:  AT+CONF BLECentral1={\"peer\": \"D8:3A:DD:09:D0:45\"}\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF BLEGATT1={\"chr\": \"6E400002B5A3F393E0A9E50E24DCCA9E\", \"service\": \"6E400001B5A3F393E0A9E50E24DCCA9E\"}\\r\\n'.....\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE INIT CENTRAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 CONNECT\\r\\n'....\nb'Response: ERR14 UNABLE TO CONNECT\\r\\n'\n\nb'Command:  AT+BLE1 CONNECT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 WRITE1 ABCDEF01\\r\\n'..\nb'Response: ERR6 NO CONNECTION\\r\\n'\n\n",
+        "longrepr": "@pytest.mark.skipif(not cf.get('feature_ble', bool), reason='BLE unavailable')\n    def test_13_2_7_1_bleWrite() -> None:\n        assert cmd(f'AT+CONF BLECentral1={json.dumps(_get_gap_config())}\\r\\n')\n        config = GattConfig(\n            chr=_hex_to_uuid(cf.get('peer_characteristic_write_uuid', int)),\n            service=_hex_to_uuid(cf.get('peer_service_write_uuid', int)))\n        assert cmd(f'AT+CONF BLEGATT1={json.dumps(config)}\\r\\n')\n        assert cmd('AT+BLE INIT CENTRAL\\r\\n') == 'OK\\r\\n'\n        _ble_connect_with_retries()\n>       assert cmd('AT+BLE1 WRITE1 ABCDEF01\\r\\n') == 'OK\\r\\n'\nE       AssertionError: assert 'ERR6 NO CONNECTION\\r\\n' == 'OK\\r\\n'\nE         - OK\r\nE         + ERR6 NO CONNECTION\n\ntests/test_section13.py:786: AssertionError"
+      },
+      "teardown": {
+        "duration": 0.0005613559987978078,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_2_7_2_bleWriteNotHex",
+      "lineno": 790,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_2_7_2_bleWriteNotHex",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 13.916207403002772,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'...\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_2_7_2_bleWriteNotHex\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.32372401900283876,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+CONF BLECentral1={\"peer\": \"D8:3A:DD:09:D0:45\"}\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF BLEGATT1={\"chr\": \"6E400002B5A3F393E0A9E50E24DCCA9E\", \"service\": \"6E400001B5A3F393E0A9E50E24DCCA9E\"}\\r\\n'.....\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE INIT CENTRAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 CONNECT\\r\\n'....\nb'Response: ERR14 UNABLE TO CONNECT\\r\\n'\n\nb'Command:  AT+BLE1 CONNECT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 WRITE1\\r\\n'..\nb'Response: ERR4 PARAMETER ERROR\\r\\n'\n\nb'Command:  AT+BLE1 WRITE1 foo\\r\\n'..\nb'Response: ERR4 PARAMETER ERROR\\r\\n'\n\nb'Command:  AT+BLE1 WRITE1 foobar\\r\\n'..\nb'Response: ERR4 PARAMETER ERROR\\r\\n'\n\nb'Command:  AT+BLE1 WRITE1 ABC\\r\\n'..\nb'Response: ERR4 PARAMETER ERROR\\r\\n'\n\n"
+      },
+      "teardown": {
+        "duration": 0.0009799269973882474,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_2_7_3_bleWriteCentralConfigUndefined",
+      "lineno": 807,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_2_7_3_bleWriteCentralConfigUndefined",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 14.812218592000136,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'.........................\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'...\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_2_7_3_bleWriteCentralConfigUndefined\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.2582586429998628,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+CONF BLECentral1={\"peer\": \"D8:3A:DD:09:D0:45\"}\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF BLEGATT1={\"chr\": \"6E400002B5A3F393E0A9E50E24DCCA9E\", \"service\": \"6E400001B5A3F393E0A9E50E24DCCA9E\"}\\r\\n'.....\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE INIT CENTRAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 CONNECT\\r\\n'....\nb'Response: ERR14 UNABLE TO CONNECT\\r\\n'\n\nb'Command:  AT+BLE1 CONNECT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE2 WRITE1 ABDCEF01\\r\\n'..\nb'Response: ERR8 PARAMETER UNDEFINED\\r\\n'\n\n"
+      },
+      "teardown": {
+        "duration": 0.001014669000142021,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_2_7_bleWriteOutOfRange",
+      "lineno": 823,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_2_7_bleWriteOutOfRange",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 14.362321089000034,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'.........................\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_2_7_bleWriteOutOfRange\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.409836255999835,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+CONF BLECentral1={\"peer\": \"D8:3A:DD:09:D0:45\"}\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF BLEGATT1={\"chr\": \"6E400002B5A3F393E0A9E50E24DCCA9E\", \"service\": \"6E400001B5A3F393E0A9E50E24DCCA9E\"}\\r\\n'.....\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE INIT CENTRAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 CONNECT\\r\\n'....\nb'Response: ERR14 UNABLE TO CONNECT\\r\\n'\n\nb'Command:  AT+BLE1 CONNECT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE0 WRITE1 ABCDEF01\\r\\n'..\nb'Response: ERR7 OUT OF RANGE\\r\\n'\n\nb'Command:  AT+BLE512 WRITE1 ABCDEF01\\r\\n'..\nb'Response: ERR7 OUT OF RANGE\\r\\n'\n\nb'Command:  AT+BLE1 WRITE0 ABCDEF01\\r\\n'..\nb'Response: ERR7 OUT OF RANGE\\r\\n'\n\nb'Command:  AT+BLE0 WRITE0 ABCDEF01\\r\\n'..\nb'Response: ERR7 OUT OF RANGE\\r\\n'\n\nb'Command:  AT+BLE512 WRITE0 ABCDEF01\\r\\n'..\nb'Response: ERR7 OUT OF RANGE\\r\\n'\n\nb'Command:  AT+BLE1 WRITE512 ABCDEF01\\r\\n'..\nb'Response: ERR7 OUT OF RANGE\\r\\n'\n\nb'Command:  AT+BLE0 WRITE512 ABCDEF01\\r\\n'..\nb'Response: ERR7 OUT OF RANGE\\r\\n'\n\nb'Command:  AT+BLE512 WRITE512 ABCDEF01\\r\\n'..\nb'Response: ERR7 OUT OF RANGE\\r\\n'\n\n"
+      },
+      "teardown": {
+        "duration": 0.0008944969995354768,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_2_7_6_bleWriteGattNoConnection",
+      "lineno": 842,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_2_7_6_bleWriteGattNoConnection",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 13.934858292999706,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'...\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_2_7_6_bleWriteGattNoConnection\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.16735371300092083,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+CONF BLECentral1={\"peer\": \"D8:3A:DD:09:D0:45\"}\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE INIT CENTRAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF BLEGATT1={\"chr\": \"6E400002B5A3F393E0A9E50E24DCCA9E\", \"service\": \"6E400001B5A3F393E0A9E50E24DCCA9E\"}\\r\\n'.....\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 WRITE1 ABCEDF01\\r\\n'..\nb'Response: ERR6 NO CONNECTION\\r\\n'\n\n"
+      },
+      "teardown": {
+        "duration": 0.0010107230009452906,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_2_7_7_bleWriteGattNotCentral",
+      "lineno": 855,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_2_7_7_bleWriteGattNotCentral",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 13.935811433999334,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'...\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_2_7_7_bleWriteGattNotCentral\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.20970146200124873,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+CONF BLECentral1={\"peer\": \"D8:3A:DD:09:D0:45\"}\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF BLEGATT1={\"chr\": \"6E400002B5A3F393E0A9E50E24DCCA9E\", \"service\": \"6E400001B5A3F393E0A9E50E24DCCA9E\"}\\r\\n'.....\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 WRITE1 ABCEDF01\\r\\n'..\nb'Response: ERR25 NOT ALLOWED\\r\\n'\n\nb'Command:  AT+CONF BLEPeripheral={}\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE INIT PERIPHERAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 WRITE1 ABCEDF01\\r\\n'..\nb'Response: ERR25 NOT ALLOWED\\r\\n'\n\n"
+      },
+      "teardown": {
+        "duration": 0.0010172219990636222,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_2_8_1_bleSubscribeOk",
+      "lineno": 881,
+      "outcome": "failed",
+      "keywords": [
+        "test_13_2_8_1_bleSubscribeOk",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 14.798667576000298,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'.........................\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'...\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_2_8_1_bleSubscribeOk\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.25851398699887795,
+        "outcome": "failed",
+        "crash": {
+          "path": "/home/sumaji/Test/tests/test_section13.py",
+          "lineno": 891,
+          "message": "AssertionError: assert 'ERR6 NO CONNECTION\\r\\n' == 'OK\\r\\n'\n  - OK\r\n  + ERR6 NO CONNECTION"
+        },
+        "traceback": [
+          {
+            "path": "tests/test_section13.py",
+            "lineno": 891,
+            "message": "AssertionError"
+          }
+        ],
+        "stdout": "b'Command:  AT+CONF BLECentral1={\"peer\": \"D8:3A:DD:09:D0:45\"}\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF BLEGATT1={\"chr\": \"6E400003B5A3F393E0A9E50E24DCCA9E\", \"service\": \"6E400001B5A3F393E0A9E50E24DCCA9E\"}\\r\\n'.....\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE INIT CENTRAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 CONNECT\\r\\n'....\nb'Response: ERR14 UNABLE TO CONNECT\\r\\n'\n\nb'Command:  AT+BLE1 CONNECT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 SUBSCRIBE1\\r\\n'..\nb'Response: ERR6 NO CONNECTION\\r\\n'\n\n",
+        "longrepr": "@pytest.mark.skipif(not cf.get('feature_ble', bool), reason='BLE unavailable')\n    def test_13_2_8_1_bleSubscribeOk() -> None:\n        assert cmd(f'AT+CONF BLECentral1={json.dumps(_get_gap_config())}\\r\\n')\n        config = GattConfig(\n            chr=_hex_to_uuid(cf.get('peer_characteristic_subscribe_uuid', int)),\n            service=_hex_to_uuid(cf.get('peer_service_subscribe_uuid', int)))\n        assert cmd(f'AT+CONF BLEGATT1={json.dumps(config)}\\r\\n') == 'OK\\r\\n'\n        assert cmd('AT+BLE INIT CENTRAL\\r\\n') == 'OK\\r\\n'\n        _ble_connect_with_retries()\n>       assert cmd('AT+BLE1 SUBSCRIBE1\\r\\n') == 'OK\\r\\n'\nE       AssertionError: assert 'ERR6 NO CONNECTION\\r\\n' == 'OK\\r\\n'\nE         - OK\r\nE         + ERR6 NO CONNECTION\n\ntests/test_section13.py:891: AssertionError"
+      },
+      "teardown": {
+        "duration": 0.0005712419988412876,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_2_8_2_bleSubscribeParameterUndefined",
+      "lineno": 895,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_2_8_2_bleSubscribeParameterUndefined",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 14.360953160001372,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'.........................\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_2_8_2_bleSubscribeParameterUndefined\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.17753347300094902,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+CONF BLECentral1={\"peer\": \"D8:3A:DD:09:D0:45\"}\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE INIT CENTRAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 CONNECT\\r\\n'....\nb'Response: ERR14 UNABLE TO CONNECT\\r\\n'\n\nb'Command:  AT+BLE1 CONNECT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 SUBSCRIBE1\\r\\n'..\nb'Response: ERR8 PARAMETER UNDEFINED\\r\\n'\n\n"
+      },
+      "teardown": {
+        "duration": 0.0008936779995565303,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_2_8_bleSubscribeOutofRange",
+      "lineno": 907,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_2_8_bleSubscribeOutofRange",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 13.93548921099864,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'...\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_2_8_bleSubscribeOutofRange\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.41155878900099196,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+CONF BLECentral1={\"peer\": \"D8:3A:DD:09:D0:45\"}\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF BLEGATT1={\"chr\": \"6E400003B5A3F393E0A9E50E24DCCA9E\", \"service\": \"6E400001B5A3F393E0A9E50E24DCCA9E\"}\\r\\n'.....\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE INIT CENTRAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 CONNECT\\r\\n'....\nb'Response: ERR14 UNABLE TO CONNECT\\r\\n'\n\nb'Command:  AT+BLE1 CONNECT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE0 SUBSCRIBE1\\r\\n'..\nb'Response: ERR7 OUT OF RANGE\\r\\n'\n\nb'Command:  AT+BLE512 SUBSCRIBE1\\r\\n'..\nb'Response: ERR7 OUT OF RANGE\\r\\n'\n\nb'Command:  AT+BLE1 SUBSCRIBE0\\r\\n'..\nb'Response: ERR7 OUT OF RANGE\\r\\n'\n\nb'Command:  AT+BLE0 SUBSCRIBE0\\r\\n'..\nb'Response: ERR7 OUT OF RANGE\\r\\n'\n\nb'Command:  AT+BLE512 SUBSCRIBE0\\r\\n'..\nb'Response: ERR7 OUT OF RANGE\\r\\n'\n\nb'Command:  AT+BLE1 SUBSCRIBE512\\r\\n'..\nb'Response: ERR7 OUT OF RANGE\\r\\n'\n\nb'Command:  AT+BLE0 SUBSCRIBE512\\r\\n'..\nb'Response: ERR7 OUT OF RANGE\\r\\n'\n\nb'Command:  AT+BLE512 SUBSCRIBE512\\r\\n'..\nb'Response: ERR7 OUT OF RANGE\\r\\n'\n\n"
+      },
+      "teardown": {
+        "duration": 0.0009080670024559367,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_2_8_5_bleSubscribeNoConnection",
+      "lineno": 925,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_2_8_5_bleSubscribeNoConnection",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 13.91670965999947,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'...\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_2_8_5_bleSubscribeNoConnection\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.1671505820013408,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+CONF BLECentral1={\"peer\": \"D8:3A:DD:09:D0:45\"}\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF BLEGATT1={\"chr\": \"6E400003B5A3F393E0A9E50E24DCCA9E\", \"service\": \"6E400001B5A3F393E0A9E50E24DCCA9E\"}\\r\\n'.....\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE INIT CENTRAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 SUBSCRIBE1\\r\\n'..\nb'Response: ERR6 NO CONNECTION\\r\\n'\n\n"
+      },
+      "teardown": {
+        "duration": 0.0008960110026237089,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_2_8_6_bleSubscribeNotAllowed",
+      "lineno": 938,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_2_8_6_bleSubscribeNotAllowed",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 14.81149511699914,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'.........................\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'...\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_2_8_6_bleSubscribeNotAllowed\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.1466087240005436,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+CONF BLECentral1={\"peer\": \"D8:3A:DD:09:D0:45\"}\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF BLEGATT1={\"chr\": \"6E400003B5A3F393E0A9E50E24DCCA9E\", \"service\": \"6E400001B5A3F393E0A9E50E24DCCA9E\"}\\r\\n'.....\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 SUBSCRIBE1\\r\\n'..\nb'Response: ERR25 NOT ALLOWED\\r\\n'\n\n"
+      },
+      "teardown": {
+        "duration": 0.001015736001136247,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_2_bleSubscribeEvent",
+      "lineno": 956,
+      "outcome": "failed",
+      "keywords": [
+        "test_13_2_bleSubscribeEvent",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 14.348760440003389,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'.........................\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_2_bleSubscribeEvent\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.2569432919990504,
+        "outcome": "failed",
+        "crash": {
+          "path": "/home/sumaji/Test/tests/test_section13.py",
+          "lineno": 966,
+          "message": "AssertionError: assert 'ERR6 NO CONNECTION\\r\\n' == 'OK\\r\\n'\n  - OK\r\n  + ERR6 NO CONNECTION"
+        },
+        "traceback": [
+          {
+            "path": "tests/test_section13.py",
+            "lineno": 966,
+            "message": "AssertionError"
+          }
+        ],
+        "stdout": "b'Command:  AT+CONF BLECentral1={\"peer\": \"D8:3A:DD:09:D0:45\"}\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF BLEGATT1={\"chr\": \"6E400003B5A3F393E0A9E50E24DCCA9E\", \"service\": \"6E400001B5A3F393E0A9E50E24DCCA9E\"}\\r\\n'.....\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE INIT CENTRAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 CONNECT\\r\\n'....\nb'Response: ERR14 UNABLE TO CONNECT\\r\\n'\n\nb'Command:  AT+BLE1 CONNECT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 SUBSCRIBE1\\r\\n'..\nb'Response: ERR6 NO CONNECTION\\r\\n'\n\n",
+        "longrepr": "@pytest.mark.skipif(not cf.get('feature_ble', bool), reason='BLE unavailable')\n    def test_13_2_bleSubscribeEvent() -> None:\n        assert cmd(f'AT+CONF BLECentral1={json.dumps(_get_gap_config())}\\r\\n')\n        config = GattConfig(\n            chr=_hex_to_uuid(cf.get('peer_characteristic_subscribe_uuid', int)),\n            service=_hex_to_uuid(cf.get('peer_service_subscribe_uuid', int)))\n        assert cmd(f'AT+CONF BLEGATT1={json.dumps(config)}\\r\\n') == 'OK\\r\\n'\n        assert cmd('AT+BLE INIT CENTRAL\\r\\n') == 'OK\\r\\n'\n        _ble_connect_with_retries()\n>       assert cmd('AT+BLE1 SUBSCRIBE1\\r\\n') == 'OK\\r\\n'\nE       AssertionError: assert 'ERR6 NO CONNECTION\\r\\n' == 'OK\\r\\n'\nE         - OK\r\nE         + ERR6 NO CONNECTION\n\ntests/test_section13.py:966: AssertionError"
+      },
+      "teardown": {
+        "duration": 0.0005603319987130817,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_2_9_1_bleGetSubscribeOkEmpty",
+      "lineno": 982,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_2_9_1_bleGetSubscribeOkEmpty",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 13.915039252002316,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'...\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_2_9_1_bleGetSubscribeOkEmpty\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.2568053819995839,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+CONF BLECentral1={\"peer\": \"D8:3A:DD:09:D0:45\"}\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF BLEGATT1={\"chr\": \"6E400003B5A3F393E0A9E50E24DCCA9E\", \"service\": \"6E400001B5A3F393E0A9E50E24DCCA9E\"}\\r\\n'.....\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE INIT CENTRAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 CONNECT\\r\\n'....\nb'Response: ERR14 UNABLE TO CONNECT\\r\\n'\n\nb'Command:  AT+BLE1 CONNECT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 GET SUBSCRIBE1\\r\\n'..\nb'Response: OK\\r\\n'\n\n"
+      },
+      "teardown": {
+        "duration": 0.001057718000083696,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_2_9_2_bleGetSubscribeWithPayloadIndexMissing",
+      "lineno": 996,
+      "outcome": "failed",
+      "keywords": [
+        "test_13_2_9_2_bleGetSubscribeWithPayloadIndexMissing",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 13.940026747000957,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'...\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_2_9_2_bleGetSubscribeWithPayloadIndexMissing\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.2588072340004146,
+        "outcome": "failed",
+        "crash": {
+          "path": "/home/sumaji/Test/tests/test_section13.py",
+          "lineno": 1006,
+          "message": "AssertionError: assert 'ERR6 NO CONNECTION\\r\\n' == 'OK\\r\\n'\n  - OK\r\n  + ERR6 NO CONNECTION"
+        },
+        "traceback": [
+          {
+            "path": "tests/test_section13.py",
+            "lineno": 1006,
+            "message": "AssertionError"
+          }
+        ],
+        "stdout": "b'Command:  AT+CONF BLECentral1={\"peer\": \"D8:3A:DD:09:D0:45\"}\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF BLEGATT1={\"chr\": \"6E400003B5A3F393E0A9E50E24DCCA9E\", \"service\": \"6E400001B5A3F393E0A9E50E24DCCA9E\"}\\r\\n'.....\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE INIT CENTRAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 CONNECT\\r\\n'....\nb'Response: ERR14 UNABLE TO CONNECT\\r\\n'\n\nb'Command:  AT+BLE1 CONNECT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 SUBSCRIBE1\\r\\n'..\nb'Response: ERR6 NO CONNECTION\\r\\n'\n\n",
+        "longrepr": "@pytest.mark.skipif(not cf.get('feature_ble', bool), reason='BLE unavailable')\n    def test_13_2_9_2_bleGetSubscribeWithPayloadIndexMissing() -> None:\n        assert cmd(f'AT+CONF BLECentral1={json.dumps(_get_gap_config())}\\r\\n')\n        config = GattConfig(\n            chr=_hex_to_uuid(cf.get('peer_characteristic_subscribe_uuid', int)),\n            service=_hex_to_uuid(cf.get('peer_service_subscribe_uuid', int)))\n        assert cmd(f'AT+CONF BLEGATT1={json.dumps(config)}\\r\\n') == 'OK\\r\\n'\n        assert cmd('AT+BLE INIT CENTRAL\\r\\n') == 'OK\\r\\n'\n        _ble_connect_with_retries()\n>       assert cmd('AT+BLE1 SUBSCRIBE1\\r\\n') == 'OK\\r\\n'\nE       AssertionError: assert 'ERR6 NO CONNECTION\\r\\n' == 'OK\\r\\n'\nE         - OK\r\nE         + ERR6 NO CONNECTION\n\ntests/test_section13.py:1006: AssertionError"
+      },
+      "teardown": {
+        "duration": 0.0006339639985526446,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_2_9_2_bleGetSubscribeWithPayloadWithIndex",
+      "lineno": 1019,
+      "outcome": "failed",
+      "keywords": [
+        "test_13_2_9_2_bleGetSubscribeWithPayloadWithIndex",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 14.815528777002328,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'.........................\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'...\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_2_9_2_bleGetSubscribeWithPayloadWithIndex\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.2586405689980893,
+        "outcome": "failed",
+        "crash": {
+          "path": "/home/sumaji/Test/tests/test_section13.py",
+          "lineno": 1029,
+          "message": "AssertionError: assert 'ERR6 NO CONNECTION\\r\\n' == 'OK\\r\\n'\n  - OK\r\n  + ERR6 NO CONNECTION"
+        },
+        "traceback": [
+          {
+            "path": "tests/test_section13.py",
+            "lineno": 1029,
+            "message": "AssertionError"
+          }
+        ],
+        "stdout": "b'Command:  AT+CONF BLECentral1={\"peer\": \"D8:3A:DD:09:D0:45\"}\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF BLEGATT1={\"chr\": \"6E400003B5A3F393E0A9E50E24DCCA9E\", \"service\": \"6E400001B5A3F393E0A9E50E24DCCA9E\"}\\r\\n'.....\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE INIT CENTRAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 CONNECT\\r\\n'....\nb'Response: ERR14 UNABLE TO CONNECT\\r\\n'\n\nb'Command:  AT+BLE1 CONNECT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 SUBSCRIBE1\\r\\n'..\nb'Response: ERR6 NO CONNECTION\\r\\n'\n\n",
+        "longrepr": "@pytest.mark.skipif(not cf.get('feature_ble', bool), reason='BLE unavailable')\n    def test_13_2_9_2_bleGetSubscribeWithPayloadWithIndex() -> None:\n        assert cmd(f'AT+CONF BLECentral1={json.dumps(_get_gap_config())}\\r\\n')\n        config = GattConfig(\n            chr=_hex_to_uuid(cf.get('peer_characteristic_subscribe_uuid', int)),\n            service=_hex_to_uuid(cf.get('peer_service_subscribe_uuid', int)))\n        assert cmd(f'AT+CONF BLEGATT1={json.dumps(config)}\\r\\n') == 'OK\\r\\n'\n        assert cmd('AT+BLE INIT CENTRAL\\r\\n') == 'OK\\r\\n'\n        _ble_connect_with_retries()\n>       assert cmd('AT+BLE1 SUBSCRIBE1\\r\\n') == 'OK\\r\\n'\nE       AssertionError: assert 'ERR6 NO CONNECTION\\r\\n' == 'OK\\r\\n'\nE         - OK\r\nE         + ERR6 NO CONNECTION\n\ntests/test_section13.py:1029: AssertionError"
+      },
+      "teardown": {
+        "duration": 0.0005686839976988267,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_2_9_bleGetSubscribeOutOfRange",
+      "lineno": 1046,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_2_9_bleGetSubscribeOutOfRange",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 14.366573960000096,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'.........................\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_2_9_bleGetSubscribeOutOfRange\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.45520324899916886,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+CONF BLECentral1={\"peer\": \"D8:3A:DD:09:D0:45\"}\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF BLEGATT1={\"chr\": \"6E400003B5A3F393E0A9E50E24DCCA9E\", \"service\": \"6E400001B5A3F393E0A9E50E24DCCA9E\"}\\r\\n'.....\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE INIT CENTRAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 CONNECT\\r\\n'....\nb'Response: ERR14 UNABLE TO CONNECT\\r\\n'\n\nb'Command:  AT+BLE1 CONNECT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE0 GET SUBSCRIBE1\\r\\n'..\nb'Response: ERR7 OUT OF RANGE\\r\\n'\n\nb'Command:  AT+BLE512 GET SUBSCRIBE1\\r\\n'..\nb'Response: ERR7 OUT OF RANGE\\r\\n'\n\nb'Command:  AT+BLE1 GET SUBSCRIBE0\\r\\n'..\nb'Response: ERR7 OUT OF RANGE\\r\\n'\n\nb'Command:  AT+BLE0 GET SUBSCRIBE0\\r\\n'..\nb'Response: ERR7 OUT OF RANGE\\r\\n'\n\nb'Command:  AT+BLE512 GET SUBSCRIBE0\\r\\n'..\nb'Response: ERR7 OUT OF RANGE\\r\\n'\n\nb'Command:  AT+BLE1 GET SUBSCRIBE512\\r\\n'..\nb'Response: ERR7 OUT OF RANGE\\r\\n'\n\nb'Command:  AT+BLE0 GET SUBSCRIBE512\\r\\n'..\nb'Response: ERR7 OUT OF RANGE\\r\\n'\n\nb'Command:  AT+BLE512 GET SUBSCRIBE512\\r\\n'..\nb'Response: ERR7 OUT OF RANGE\\r\\n'\n\nb'Command:  AT+BLE0 GET SUBSCRIBE\\r\\n'..\nb'Response: ERR7 OUT OF RANGE\\r\\n'\n\nb'Command:  AT+BLE512 GET SUBSCRIBE\\r\\n'..\nb'Response: ERR7 OUT OF RANGE\\r\\n'\n\n"
+      },
+      "teardown": {
+        "duration": 0.0009004700004879851,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_2_9_5_bleGetSubscribeMissingConfig",
+      "lineno": 1067,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_2_9_5_bleGetSubscribeMissingConfig",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 13.933568377000483,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'...\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_2_9_5_bleGetSubscribeMissingConfig\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.2589749489998212,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+CONF BLECentral1={\"peer\": \"D8:3A:DD:09:D0:45\"}\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF BLEGATT1={\"chr\": \"6E400003B5A3F393E0A9E50E24DCCA9E\", \"service\": \"6E400001B5A3F393E0A9E50E24DCCA9E\"}\\r\\n'.....\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE INIT CENTRAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 CONNECT\\r\\n'....\nb'Response: ERR14 UNABLE TO CONNECT\\r\\n'\n\nb'Command:  AT+BLE1 CONNECT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE2 GET SUBSCRIBE1\\r\\n'..\nb'Response: ERR8 PARAMETER UNDEFINED\\r\\n'\n\n"
+      },
+      "teardown": {
+        "duration": 0.00044223400254850276,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_2_9_6_bleUnsubscribeNotAllowed",
+      "lineno": 1081,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_2_9_6_bleUnsubscribeNotAllowed",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 13.930717824001476,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'...\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_2_9_6_bleUnsubscribeNotAllowed\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.2095944490029069,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+CONF BLECentral1={\"peer\": \"D8:3A:DD:09:D0:45\"}\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF BLEGATT1={\"chr\": \"6E400003B5A3F393E0A9E50E24DCCA9E\", \"service\": \"6E400001B5A3F393E0A9E50E24DCCA9E\"}\\r\\n'.....\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 GET SUBSCRIBE1\\r\\n'..\nb'Response: ERR25 NOT ALLOWED\\r\\n'\n\nb'Command:  AT+CONF BLEPeripheral={}\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE INIT PERIPHERAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 GET SUBSCRIBE1\\r\\n'..\nb'Response: ERR25 NOT ALLOWED\\r\\n'\n\n"
+      },
+      "teardown": {
+        "duration": 0.0010236020025331527,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_2_10_1_bleUnsubscribeOk",
+      "lineno": 1100,
+      "outcome": "failed",
+      "keywords": [
+        "test_13_2_10_1_bleUnsubscribeOk",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 14.781575193999743,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'.........................\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'...\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_2_10_1_bleUnsubscribeOk\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.26018799399753334,
+        "outcome": "failed",
+        "crash": {
+          "path": "/home/sumaji/Test/tests/test_section13.py",
+          "lineno": 1110,
+          "message": "AssertionError: assert 'ERR6 NO CONNECTION\\r\\n' == 'OK\\r\\n'\n  - OK\r\n  + ERR6 NO CONNECTION"
+        },
+        "traceback": [
+          {
+            "path": "tests/test_section13.py",
+            "lineno": 1110,
+            "message": "AssertionError"
+          }
+        ],
+        "stdout": "b'Command:  AT+CONF BLECentral1={\"peer\": \"D8:3A:DD:09:D0:45\"}\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE INIT CENTRAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 CONNECT\\r\\n'....\nb'Response: ERR14 UNABLE TO CONNECT\\r\\n'\n\nb'Command:  AT+BLE1 CONNECT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF BLEGATT1={\"chr\": \"6E400003B5A3F393E0A9E50E24DCCA9E\", \"service\": \"6E400001B5A3F393E0A9E50E24DCCA9E\"}\\r\\n'.....\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 SUBSCRIBE1\\r\\n'..\nb'Response: ERR6 NO CONNECTION\\r\\n'\n\n",
+        "longrepr": "@pytest.mark.skipif(not cf.get('feature_ble', bool), reason='BLE unavailable')\n    def test_13_2_10_1_bleUnsubscribeOk() -> None:\n        assert cmd(f'AT+CONF BLECentral1={json.dumps(_get_gap_config())}\\r\\n')\n        assert cmd('AT+BLE INIT CENTRAL\\r\\n') == 'OK\\r\\n'\n        _ble_connect_with_retries()\n        config = GattConfig(\n            chr=_hex_to_uuid(cf.get('peer_characteristic_subscribe_uuid', int)),\n            service=_hex_to_uuid(cf.get('peer_service_subscribe_uuid', int)))\n        assert cmd(f'AT+CONF BLEGATT1={json.dumps(config)}\\r\\n') == 'OK\\r\\n'\n>       assert cmd('AT+BLE1 SUBSCRIBE1\\r\\n') == 'OK\\r\\n'\nE       AssertionError: assert 'ERR6 NO CONNECTION\\r\\n' == 'OK\\r\\n'\nE         - OK\r\nE         + ERR6 NO CONNECTION\n\ntests/test_section13.py:1110: AssertionError"
+      },
+      "teardown": {
+        "duration": 0.0006365720000758301,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_2_10_2_bleUnsubscribeMissingCentralConfig",
+      "lineno": 1117,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_2_10_2_bleUnsubscribeMissingCentralConfig",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 14.349006637999992,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'.........................\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_2_10_2_bleUnsubscribeMissingCentralConfig\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.17637866899895016,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+CONF BLECentral1={\"peer\": \"D8:3A:DD:09:D0:45\"}\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE INIT CENTRAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 CONNECT\\r\\n'....\nb'Response: ERR14 UNABLE TO CONNECT\\r\\n'\n\nb'Command:  AT+BLE1 CONNECT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 UNSUBSCRIBE1\\r\\n'..\nb'Response: ERR8 PARAMETER UNDEFINED\\r\\n'\n\n"
+      },
+      "teardown": {
+        "duration": 0.0010244529985357076,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_2_10_3_bleUnsubscribeMissingGattConfig",
+      "lineno": 1127,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_2_10_3_bleUnsubscribeMissingGattConfig",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 13.946431031999964,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'...\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_2_10_3_bleUnsubscribeMissingGattConfig\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.2583017060023849,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+CONF BLECentral1={\"peer\": \"D8:3A:DD:09:D0:45\"}\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF BLEGATT1={\"chr\": \"6E400003B5A3F393E0A9E50E24DCCA9E\", \"service\": \"6E400001B5A3F393E0A9E50E24DCCA9E\"}\\r\\n'.....\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE INIT CENTRAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 CONNECT\\r\\n'....\nb'Response: ERR14 UNABLE TO CONNECT\\r\\n'\n\nb'Command:  AT+BLE1 CONNECT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE2 UNSUBSCRIBE1\\r\\n'..\nb'Response: ERR8 PARAMETER UNDEFINED\\r\\n'\n\n"
+      },
+      "teardown": {
+        "duration": 0.001026951998937875,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_2_10_bleUnsubscribeOutOfRange",
+      "lineno": 1143,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_2_10_bleUnsubscribeOutOfRange",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 13.927305107001303,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'...\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_2_10_bleUnsubscribeOutOfRange\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.4118280609982321,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+CONF BLECentral1={\"peer\": \"D8:3A:DD:09:D0:45\"}\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF BLEGATT1={\"chr\": \"6E400003B5A3F393E0A9E50E24DCCA9E\", \"service\": \"6E400001B5A3F393E0A9E50E24DCCA9E\"}\\r\\n'.....\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE INIT CENTRAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 CONNECT\\r\\n'....\nb'Response: ERR14 UNABLE TO CONNECT\\r\\n'\n\nb'Command:  AT+BLE1 CONNECT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE0 UNSUBSCRIBE1\\r\\n'..\nb'Response: ERR7 OUT OF RANGE\\r\\n'\n\nb'Command:  AT+BLE512 UNSUBSCRIBE1\\r\\n'..\nb'Response: ERR7 OUT OF RANGE\\r\\n'\n\nb'Command:  AT+BLE1 UNSUBSCRIBE0\\r\\n'..\nb'Response: ERR7 OUT OF RANGE\\r\\n'\n\nb'Command:  AT+BLE0 UNSUBSCRIBE0\\r\\n'..\nb'Response: ERR7 OUT OF RANGE\\r\\n'\n\nb'Command:  AT+BLE512 UNSUBSCRIBE0\\r\\n'..\nb'Response: ERR7 OUT OF RANGE\\r\\n'\n\nb'Command:  AT+BLE1 UNSUBSCRIBE512\\r\\n'..\nb'Response: ERR7 OUT OF RANGE\\r\\n'\n\nb'Command:  AT+BLE0 UNSUBSCRIBE512\\r\\n'..\nb'Response: ERR7 OUT OF RANGE\\r\\n'\n\nb'Command:  AT+BLE512 UNSUBSCRIBE512\\r\\n'..\nb'Response: ERR7 OUT OF RANGE\\r\\n'\n\n"
+      },
+      "teardown": {
+        "duration": 0.0008140579993778374,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_2_10_6_bleUnsubscribeNoConnection",
+      "lineno": 1162,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_2_10_6_bleUnsubscribeNoConnection",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 14.79694516499876,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'.........................\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'...\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_2_10_6_bleUnsubscribeNoConnection\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.16733165600089706,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+CONF BLECentral1={\"peer\": \"D8:3A:DD:09:D0:45\"}\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF BLEGATT1={\"chr\": \"6E400003B5A3F393E0A9E50E24DCCA9E\", \"service\": \"6E400001B5A3F393E0A9E50E24DCCA9E\"}\\r\\n'.....\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE INIT CENTRAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 UNSUBSCRIBE1\\r\\n'..\nb'Response: ERR6 NO CONNECTION\\r\\n'\n\n"
+      },
+      "teardown": {
+        "duration": 0.0008896889994502999,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_2_10_7_bleUnsubscribeNotAllowed",
+      "lineno": 1175,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_2_10_7_bleUnsubscribeNotAllowed",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 14.386068509000324,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'.........................\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_2_10_7_bleUnsubscribeNotAllowed\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.14651581699945382,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+CONF BLECentral1={\"peer\": \"D8:3A:DD:09:D0:45\"}\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF BLEGATT1={\"chr\": \"6E400003B5A3F393E0A9E50E24DCCA9E\", \"service\": \"6E400001B5A3F393E0A9E50E24DCCA9E\"}\\r\\n'.....\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 UNSUBSCRIBE1\\r\\n'..\nb'Response: ERR25 NOT ALLOWED\\r\\n'\n\n"
+      },
+      "teardown": {
+        "duration": 0.0008943729990278371,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_3_1_1_peripheralConnectQueryDisconnected",
+      "lineno": 1198,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_3_1_1_peripheralConnectQueryDisconnected",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 13.950557894997473,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'...\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_3_1_1_peripheralConnectQueryDisconnected\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.14649261599697638,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+CONF BLEGATT1={\"chr\": \"32EF00020FDF458989CAED89ECF678D7\", \"service\": \"32EF00010FDF458989CAED89ECF678D7\"}\\r\\n'.....\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF BLEPeripheral={}\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE INIT PERIPHERAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE CONNECT?\\r\\n'..\nb'Response: OK 0 DISCONNECTED\\r\\n'\n\n"
+      },
+      "teardown": {
+        "duration": 0.0008959090009739157,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_3_1_2_peripheralConnectQueryConnected",
+      "lineno": 1209,
+      "outcome": "failed",
+      "keywords": [
+        "test_13_3_1_2_peripheralConnectQueryConnected",
+        "asyncio",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 13.93938105199777,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'...\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_3_1_2_peripheralConnectQueryConnected\u001b[0m\n"
+      },
+      "call": {
+        "duration": 125.5661969870016,
+        "outcome": "failed",
+        "crash": {
+          "path": "/home/sumaji/Test/tests/test_section13.py",
+          "lineno": 1226,
+          "message": "AssertionError: assert 'OK 0 DISCONNECTED\\r\\n' == 'OK 1 CONNECTED\\r\\n'\n  - OK 1 CONNECTED\r\n  ?    ^^\n  + OK 0 DISCONNECTED\r\n  ?    ^^^^^"
+        },
+        "traceback": [
+          {
+            "path": "tests/test_section13.py",
+            "lineno": 1226,
+            "message": "AssertionError"
+          }
+        ],
+        "stdout": "b'Command:  AT+CONF CustomName=ELTest\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF BLEGATT1={\"chr\": \"32EF00020FDF458989CAED89ECF678D7\", \"service\": \"32EF00010FDF458989CAED89ECF678D7\"}\\r\\n'.....\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF BLEPeripheral={}\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE INIT PERIPHERAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE ADVERTISE\\r\\n'..\nb'Response: OK\\r\\n'\n\nConnecting to a central device...\nConnected: True\nTimed out while waiting for an event to match: OK \\d+ \\d+ BLE CONNECTED\\r\\n\nb'Command:  AT+BLE CONNECT?\\r\\n'..\nb'Response: OK 0 DISCONNECTED\\r\\n'\n\n",
+        "longrepr": "@pytest.mark.skipif(not cf.get('feature_ble', bool), reason='BLE unavailable')\n    @pytest.mark.asyncio\n    async def test_13_3_1_2_peripheralConnectQueryConnected() -> None:\n        config = GattConfig(chr=LOCAL_CHAR_ID, service=LOCAL_SERVICE_ID)\n        dname = cf.get('peer_name', str)\n        assert cmd(f'AT+CONF CustomName={dname}\\r\\n') == 'OK\\r\\n'\n        assert cmd(f'AT+CONF BLEGATT1={json.dumps(config)}\\r\\n') == 'OK\\r\\n'\n        assert cmd('AT+CONF BLEPeripheral={}\\r\\n') == 'OK\\r\\n'\n        assert cmd('AT+BLE INIT PERIPHERAL\\r\\n') == 'OK\\r\\n'\n        assert cmd('AT+BLE ADVERTISE\\r\\n') == 'OK\\r\\n'\n        print('Connecting to a central device...')\n        device = await BleakScanner.find_device_by_name(dname, timeout=60)\n        assert device, f'{dname} not found'\n        async with BleakClient(device, timeout=60) as client:\n            print(\"Connected: {0}\".format(client.is_connected))\n            get_next_event(r'OK \\d+ \\d+ BLE CONNECTED\\r\\n', print_dots=False)\n>           assert cmd('AT+BLE CONNECT?\\r\\n') == 'OK 1 CONNECTED\\r\\n'\nE           AssertionError: assert 'OK 0 DISCONNECTED\\r\\n' == 'OK 1 CONNECTED\\r\\n'\nE             - OK 1 CONNECTED\r\nE             ?    ^^\nE             + OK 0 DISCONNECTED\r\nE             ?    ^^^^^\n\ntests/test_section13.py:1226: AssertionError"
+      },
+      "teardown": {
+        "duration": 0.0013850819996150676,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_3_1_3_peripheralConnectQueryAdvertising",
+      "lineno": 1230,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_3_1_3_peripheralConnectQueryAdvertising",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 13.926238091000414,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'...\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_3_1_3_peripheralConnectQueryAdvertising\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.16833932000008645,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+CONF BLEGATT1={\"chr\": \"32EF00020FDF458989CAED89ECF678D7\", \"service\": \"32EF00010FDF458989CAED89ECF678D7\"}\\r\\n'.....\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF BLEPeripheral={}\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE INIT PERIPHERAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE ADVERTISE\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE CONNECT?\\r\\n'..\nb'Response: OK 2 ADVERTISING\\r\\n'\n\n"
+      },
+      "teardown": {
+        "duration": 0.0009538320009596646,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_3_1_4_peripheralConnectQueryNotPeripheral",
+      "lineno": 1242,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_3_1_4_peripheralConnectQueryNotPeripheral",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 14.80792280699825,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'.........................\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'...\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_3_1_4_peripheralConnectQueryNotPeripheral\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.043913713001529686,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+BLE INIT CENTRAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE CONNECT?\\r\\n'..\nb'Response: ERR25 NOT ALLOWED\\r\\n'\n\n"
+      },
+      "teardown": {
+        "duration": 0.0009551479997753631,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_3_2_1_peripheralDisconnect",
+      "lineno": 1252,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_3_2_1_peripheralDisconnect",
+        "asyncio",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 14.370760787001927,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'.........................\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_3_2_1_peripheralDisconnect\u001b[0m\n"
+      },
+      "call": {
+        "duration": 245.52553923199957,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+CONF CustomName=ELTest\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF BLEGATT1={\"chr\": \"32EF00020FDF458989CAED89ECF678D7\", \"service\": \"32EF00010FDF458989CAED89ECF678D7\"}\\r\\n'.....\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF BLEPeripheral={}\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE INIT PERIPHERAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE ADVERTISE\\r\\n'..\nb'Response: OK\\r\\n'\n\nConnecting to a central device...\nConnected: True\nTimed out while waiting for an event to match: OK \\d+ \\d+ BLE CONNECTED\\r\\n\nb'Command:  AT+BLE DISCONNECT\\r\\n'.\nb'Response: OK\\r\\n'\n\nTimed out while waiting for an event to match: OK \\d+ \\d+ BLE CON.*LOST\\r\\n\nb'Command:  AT+BLE CONNECT?\\r\\n'..\nb'Response: OK 0 DISCONNECTED\\r\\n'\n\ndisconnect: BleakClient, D4:48:67:4A:46:40\n"
+      },
+      "teardown": {
+        "duration": 0.0020699720007542055,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_3_2_1_peripheralDisconnectAlready",
+      "lineno": 1286,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_3_2_1_peripheralDisconnectAlready",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 14.35802198699821,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'.........................\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_3_2_1_peripheralDisconnectAlready\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.14577671000006376,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+CONF BLEGATT1={\"chr\": \"32EF00020FDF458989CAED89ECF678D7\", \"service\": \"32EF00010FDF458989CAED89ECF678D7\"}\\r\\n'.....\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF BLEPeripheral={}\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE INIT PERIPHERAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE DISCONNECT\\r\\n'..\nb'Response: OK\\r\\n'\n\n"
+      },
+      "teardown": {
+        "duration": 0.001000828000542242,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_3_2_2_peripheralDisconnectNotPeripheral",
+      "lineno": 1297,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_3_2_2_peripheralDisconnectNotPeripheral",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 13.942745187003311,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'...\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_3_2_2_peripheralDisconnectNotPeripheral\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.06575858999713091,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+BLE DISCONNECT\\r\\n'..\nb'Response: ERR25 NOT ALLOWED\\r\\n'\n\nb'Command:  AT+BLE INIT CENTRAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE DISCONNECT\\r\\n'..\nb'Response: ERR25 NOT ALLOWED\\r\\n'\n\n"
+      },
+      "teardown": {
+        "duration": 0.0010875510015466716,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_3_3_1_bleAdvertise",
+      "lineno": 1315,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_3_3_1_bleAdvertise",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 13.9302132849989,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'...\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_3_3_1_bleAdvertise\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.14807640200160677,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+CONF BLEGATT1={\"chr\": \"32EF00020FDF458989CAED89ECF678D7\", \"service\": \"32EF00010FDF458989CAED89ECF678D7\"}\\r\\n'.....\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF BLEPeripheral={}\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE INIT PERIPHERAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE ADVERTISE\\r\\n'..\nb'Response: OK\\r\\n'\n\n"
+      },
+      "teardown": {
+        "duration": 0.001041587001964217,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_3_3_2_bleAdvertiseCancel",
+      "lineno": 1326,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_3_3_2_bleAdvertiseCancel",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 14.783396516999346,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'.........................\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'...\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_3_3_2_bleAdvertiseCancel\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.18795585399857373,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+CONF BLEGATT1={\"chr\": \"32EF00020FDF458989CAED89ECF678D7\", \"service\": \"32EF00010FDF458989CAED89ECF678D7\"}\\r\\n'.....\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF BLEPeripheral={}\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE INIT PERIPHERAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE ADVERTISE CANCEL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE ADVERTISE\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE ADVERTISE CANCEL\\r\\n'..\nb'Response: OK\\r\\n'\n\n"
+      },
+      "teardown": {
+        "duration": 0.0010056419996544719,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_3_3_2_bleAdvertiseCancelConnected",
+      "lineno": 1338,
+      "outcome": "failed",
+      "keywords": [
+        "test_13_3_3_2_bleAdvertiseCancelConnected",
+        "asyncio",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 14.36343399299949,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'.........................\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_3_3_2_bleAdvertiseCancelConnected\u001b[0m\n"
+      },
+      "call": {
+        "duration": 126.0855755099983,
+        "outcome": "failed",
+        "crash": {
+          "path": "/home/sumaji/Test/tests/test_section13.py",
+          "lineno": 1356,
+          "message": "AssertionError: assert 'OK 0 DISCONNECTED\\r\\n' == 'OK 1 CONNECTED\\r\\n'\n  - OK 1 CONNECTED\r\n  ?    ^^\n  + OK 0 DISCONNECTED\r\n  ?    ^^^^^"
+        },
+        "traceback": [
+          {
+            "path": "tests/test_section13.py",
+            "lineno": 1356,
+            "message": "AssertionError"
+          }
+        ],
+        "stdout": "b'Command:  AT+CONF CustomName=ELTest\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF BLEGATT1={\"chr\": \"32EF00020FDF458989CAED89ECF678D7\", \"service\": \"32EF00010FDF458989CAED89ECF678D7\"}\\r\\n'.....\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF BLEPeripheral={}\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE INIT PERIPHERAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE ADVERTISE\\r\\n'..\nb'Response: OK\\r\\n'\n\nConnecting to a central device...\nConnected: True\nTimed out while waiting for an event to match: OK \\d+ \\d+ BLE CONNECTED\\r\\n\nb'Command:  AT+BLE ADVERTISE CANCEL\\r\\n'.\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE CONNECT?\\r\\n'..\nb'Response: OK 0 DISCONNECTED\\r\\n'\n\n",
+        "longrepr": "@pytest.mark.skipif(not cf.get('feature_ble', bool), reason='BLE unavailable')\n    @pytest.mark.asyncio\n    async def test_13_3_3_2_bleAdvertiseCancelConnected() -> None:\n        config = GattConfig(chr=LOCAL_CHAR_ID, service=LOCAL_SERVICE_ID)\n        dname = cf.get('peer_name', str)\n        assert cmd(f'AT+CONF CustomName={dname}\\r\\n') == 'OK\\r\\n'\n        assert cmd(f'AT+CONF BLEGATT1={json.dumps(config)}\\r\\n') == 'OK\\r\\n'\n        assert cmd('AT+CONF BLEPeripheral={}\\r\\n') == 'OK\\r\\n'\n        assert cmd('AT+BLE INIT PERIPHERAL\\r\\n') == 'OK\\r\\n'\n        assert cmd('AT+BLE ADVERTISE\\r\\n') == 'OK\\r\\n'\n        print('Connecting to a central device...')\n        device = await BleakScanner.find_device_by_name(dname, timeout=60)\n        assert device, f'{dname} not found'\n        async with BleakClient(device, timeout=60) as client:\n            print(\"Connected: {0}\".format(client.is_connected))\n            get_next_event(r\"OK \\d+ \\d+ BLE CONNECTED\\r\\n\", print_dots=False)\n            assert cmd('AT+BLE ADVERTISE CANCEL\\r\\n') == 'OK\\r\\n'\n>           assert cmd('AT+BLE CONNECT?\\r\\n') == 'OK 1 CONNECTED\\r\\n'\nE           AssertionError: assert 'OK 0 DISCONNECTED\\r\\n' == 'OK 1 CONNECTED\\r\\n'\nE             - OK 1 CONNECTED\r\nE             ?    ^^\nE             + OK 0 DISCONNECTED\r\nE             ?    ^^^^^\n\ntests/test_section13.py:1356: AssertionError"
+      },
+      "teardown": {
+        "duration": 0.0012321239992161281,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_3_3_3_bleAdvertiseIndex",
+      "lineno": 1360,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_3_3_3_bleAdvertiseIndex",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 14.34650956400219,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'.........................\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_3_3_3_bleAdvertiseIndex\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.1468268930002523,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+CONF BLEGATT1={\"chr\": \"32EF00020FDF458989CAED89ECF678D7\", \"service\": \"32EF00010FDF458989CAED89ECF678D7\"}\\r\\n'.....\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF BLEPeripheral={}\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE INIT PERIPHERAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE1 ADVERTISE\\r\\n'..\nb'Response: ERR4 PARAMETER ERROR\\r\\n'\n\n"
+      },
+      "teardown": {
+        "duration": 0.0010318079985154327,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_3_3_6_bleAdvertiseNotPeripheral",
+      "lineno": 1380,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_3_3_6_bleAdvertiseNotPeripheral",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 13.926759531001153,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'...\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_3_3_6_bleAdvertiseNotPeripheral\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.06549208399883355,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+BLE ADVERTISE\\r\\n'..\nb'Response: ERR25 NOT ALLOWED\\r\\n'\n\nb'Command:  AT+BLE INIT CENTRAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE ADVERTISE\\r\\n'..\nb'Response: ERR25 NOT ALLOWED\\r\\n'\n\n"
+      },
+      "teardown": {
+        "duration": 0.0009920099982991815,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_3_4_1_bleGetHasValue",
+      "lineno": 1394,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_3_4_1_bleGetHasValue",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 13.919935419002286,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'...\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_3_4_1_bleGetHasValue\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.16647087399906013,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+CONF BLEGATT1={\"chr\": \"32EF00020FDF458989CAED89ECF678D7\", \"service\": \"32EF00010FDF458989CAED89ECF678D7\"}\\r\\n'.....\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF BLEPeripheral={}\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE INIT PERIPHERAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE SET1 AB\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE GET1\\r\\n'..\nb'Response: OK AB\\r\\n'\n\n"
+      },
+      "teardown": {
+        "duration": 0.0010609560013108421,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_3_4_2_bleGetEmpty",
+      "lineno": 1407,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_3_4_2_bleGetEmpty",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 14.82251648500096,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'.........................\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'...\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_3_4_2_bleGetEmpty\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.14560857999822474,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+CONF BLEGATT1={\"chr\": \"32EF00020FDF458989CAED89ECF678D7\", \"service\": \"32EF00010FDF458989CAED89ECF678D7\"}\\r\\n'.....\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF BLEPeripheral={}\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE INIT PERIPHERAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE GET1\\r\\n'..\nb'Response: OK \\r\\n'\n\n"
+      },
+      "teardown": {
+        "duration": 0.001028861999657238,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_3_4_3_bleGetNoConfig",
+      "lineno": 1418,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_3_4_3_bleGetNoConfig",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 14.357519847999356,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'.........................\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_3_4_3_bleGetNoConfig\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.1465321830000903,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+CONF BLEGATT1={\"chr\": \"32EF00020FDF458989CAED89ECF678D7\", \"service\": \"32EF00010FDF458989CAED89ECF678D7\"}\\r\\n'.....\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF BLEPeripheral={}\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE INIT PERIPHERAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE GET2\\r\\n'..\nb'Response: ERR8 PARAMETER UNDEFINED\\r\\n'\n\n"
+      },
+      "teardown": {
+        "duration": 0.0010304730021744035,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_3_4_bleGetNoIndex",
+      "lineno": 1427,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_3_4_bleGetNoIndex",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 13.940913911003008,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'...\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_3_4_bleGetNoIndex\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.14675922300011734,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+CONF BLEGATT1={\"chr\": \"32EF00020FDF458989CAED89ECF678D7\", \"service\": \"32EF00010FDF458989CAED89ECF678D7\"}\\r\\n'.....\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF BLEPeripheral={}\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE INIT PERIPHERAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE GET\\r\\n'..\nb'Response: ERR4 PARAMETER ERROR\\r\\n'\n\n"
+      },
+      "teardown": {
+        "duration": 0.0010321219997422304,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_3_4_4_bleGetOutOfRange",
+      "lineno": 1438,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_3_4_4_bleGetOutOfRange",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 13.92761379300282,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'...\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_3_4_4_bleGetOutOfRange\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.1680338070000289,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+CONF BLEGATT1={\"chr\": \"32EF00020FDF458989CAED89ECF678D7\", \"service\": \"32EF00010FDF458989CAED89ECF678D7\"}\\r\\n'.....\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF BLEPeripheral={}\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE INIT PERIPHERAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE GET0\\r\\n'..\nb'Response: ERR7 OUT OF RANGE\\r\\n'\n\nb'Command:  AT+BLE GET512\\r\\n'..\nb'Response: ERR7 OUT OF RANGE\\r\\n'\n\n"
+      },
+      "teardown": {
+        "duration": 0.0010605290008243173,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_3_4_5_bleGetNotPeripheral",
+      "lineno": 1450,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_3_4_5_bleGetNotPeripheral",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 14.802361792997544,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'.........................\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'...\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_3_4_5_bleGetNotPeripheral\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.14704070900188526,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+CONF BLEGATT1={\"chr\": \"32EF00020FDF458989CAED89ECF678D7\", \"service\": \"32EF00010FDF458989CAED89ECF678D7\"}\\r\\n'.....\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE GET1\\r\\n'..\nb'Response: ERR25 NOT ALLOWED\\r\\n'\n\nb'Command:  AT+BLE INIT CENTRAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE GET1\\r\\n'..\nb'Response: ERR25 NOT ALLOWED\\r\\n'\n\n"
+      },
+      "teardown": {
+        "duration": 0.0008992309994937386,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_3_5_1_bleSetOk",
+      "lineno": 1470,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_3_5_1_bleSetOk",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 14.369085495000036,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'.........................\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_3_5_1_bleSetOk\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.2085711239997181,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+CONF BLEGATT1={\"chr\": \"32EF00020FDF458989CAED89ECF678D7\", \"service\": \"32EF00010FDF458989CAED89ECF678D7\"}\\r\\n'.....\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF BLEPeripheral={}\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE INIT PERIPHERAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE SET1 AB\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE GET1\\r\\n'..\nb'Response: OK AB\\r\\n'\n\nb'Command:  AT+BLE SET1 \\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE GET1\\r\\n'..\nb'Response: OK \\r\\n'\n\n"
+      },
+      "teardown": {
+        "duration": 0.0011281959996267688,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_3_5_2_bleSetByteHexArray",
+      "lineno": 1486,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_3_5_2_bleSetByteHexArray",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 13.938087726000958,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'...\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_3_5_2_bleSetByteHexArray\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.2107865120015049,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+CONF BLEGATT1={\"chr\": \"32EF00020FDF458989CAED89ECF678D7\", \"service\": \"32EF00010FDF458989CAED89ECF678D7\"}\\r\\n'.....\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF BLEPeripheral={}\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE INIT PERIPHERAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE SET1 hello world\\r\\n'..\nb'Response: ERR4 PARAMETER ERROR\\r\\n'\n\nb'Command:  AT+BLE GET1\\r\\n'..\nb'Response: OK \\r\\n'\n\nb'Command:  AT+BLE SET1 AAAAA\\r\\n'..\nb'Response: ERR4 PARAMETER ERROR\\r\\n'\n\nb'Command:  AT+BLE GET1\\r\\n'..\nb'Response: OK \\r\\n'\n\n"
+      },
+      "teardown": {
+        "duration": 0.0006822840005042963,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_3_5_3_bleSetNotConfigured",
+      "lineno": 1502,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_3_5_3_bleSetNotConfigured",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 13.933065290999366,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'...\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_3_5_3_bleSetNotConfigured\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.14649511799871107,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+CONF BLEGATT1={\"chr\": \"32EF00020FDF458989CAED89ECF678D7\", \"service\": \"32EF00010FDF458989CAED89ECF678D7\"}\\r\\n'.....\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF BLEPeripheral={}\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE INIT PERIPHERAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE SET2 \\r\\n'..\nb'Response: ERR8 PARAMETER UNDEFINED\\r\\n'\n\n"
+      },
+      "teardown": {
+        "duration": 0.0011225109992665239,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_3_5_4_bleSetNotConfigured",
+      "lineno": 1513,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_3_5_4_bleSetNotConfigured",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 14.816600328002096,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'.........................\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'...\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_3_5_4_bleSetNotConfigured\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.16764759700163268,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+CONF BLEGATT1={\"chr\": \"32EF00020FDF458989CAED89ECF678D7\", \"service\": \"32EF00010FDF458989CAED89ECF678D7\"}\\r\\n'.....\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF BLEPeripheral={}\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE INIT PERIPHERAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE SET0 \\r\\n'..\nb'Response: ERR7 OUT OF RANGE\\r\\n'\n\nb'Command:  AT+BLE SET512 \\r\\n'..\nb'Response: ERR7 OUT OF RANGE\\r\\n'\n\n"
+      },
+      "teardown": {
+        "duration": 0.0009349899992230348,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_3_5_5_bleSetNotConfigured",
+      "lineno": 1525,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_3_5_5_bleSetNotConfigured",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 14.362587748000806,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'.........................\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_3_5_5_bleSetNotConfigured\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.137751689999277,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+CONF BLEGATT1={\"chr\": \"32EF00020FDF458989CAED89ECF678D7\", \"service\": \"32EF00010FDF458989CAED89ECF678D7\"}\\r\\n'.....\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE SET1 \\r\\n'.\nb'Response: ERR25 NOT ALLOWED\\r\\n'\n\nb'Command:  AT+BLE INIT CENTRAL\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+BLE SET1 \\r\\n'..\nb'Response: ERR25 NOT ALLOWED\\r\\n'\n\n"
+      },
+      "teardown": {
+        "duration": 0.0010157869983231649,
+        "outcome": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_section13.py::test_13_ble_conf_invalidJson",
+      "lineno": 1539,
+      "outcome": "passed",
+      "keywords": [
+        "test_13_ble_conf_invalidJson",
+        "skipif",
+        "pytestmark",
+        "tests/test_section13.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 13.93566609300251,
+        "outcome": "passed",
+        "stdout": "Reseting device\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'...\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_13_ble_conf_invalidJson\u001b[0m\n"
+      },
+      "call": {
+        "duration": 0.3171026920026634,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+CONF? BLECentral1\\r\\n'..\nb'Response: OK \\r\\n'\n\nb'Command:  AT+CONF BLECentral1={\"hello\": \"aaaaa\"}\\r\\n'...\nb'Response: ERR4 PARAMETER ERROR\\r\\n'\n\nb'Command:  AT+CONF BLECentral1=hello\\r\\n'..\nb'Response: ERR4 PARAMETER ERROR\\r\\n'\n\nb'Command:  AT+CONF? BLECentral1\\r\\n'..\nb'Response: OK \\r\\n'\n\nb'Command:  AT+CONF? BLEGATT1\\r\\n'..\nb'Response: OK \\r\\n'\n\nb'Command:  AT+CONF BLEGATT1={\"hello\": \"aaaaa\"}\\r\\n'...\nb'Response: ERR4 PARAMETER ERROR\\r\\n'\n\nb'Command:  AT+CONF BLEGATT1=hello\\r\\n'..\nb'Response: ERR4 PARAMETER ERROR\\r\\n'\n\nb'Command:  AT+CONF? BLEGATT1\\r\\n'..\nb'Response: OK \\r\\n'\n\nb'Command:  AT+CONF? BLEPeripheral\\r\\n'..\nb'Response: OK \\r\\n'\n\nb'Command:  AT+CONF BLEPeripheral={\"hello\": \"aaaaa\"}\\r\\n'...\nb'Response: ERR4 PARAMETER ERROR\\r\\n'\n\nb'Command:  AT+CONF BLEPeripheral=hello\\r\\n'..\nb'Response: ERR4 PARAMETER ERROR\\r\\n'\n\nb'Command:  AT+CONF? BLEPeripheral\\r\\n'..\nb'Response: OK \\r\\n'\n\n"
+      },
+      "teardown": {
+        "duration": 0.35573187499903725,
+        "outcome": "passed",
+        "stdout": "\nServer: Stopping the BLE service...\n"
+      }
+    }
+  ],
+  "expresslink_info": {
+    "platform": "raspberry_pi",
+    "test_version": "eltest-0.0.1",
+    "test_techspec": "v1.2",
+    "device_version": "1.0.0",
+    "device_techspec": "v1.2",
+    "thing_name": "silicon_labs_thing",
+    "about": "Si-Labs - SiWG917",
+    "certificate": "-----BEGIN CERTIFICATE-----\\AMIIDWTCCAkGgAwIBAgIUOWBvTtHMVup0MWDN3Z2ugpshHhYwDQYJKoZIhvcNAQEL\\ABQAwTTFLMEkGA1UECwxCQW1hem9uIFdlYiBTZXJ2aWNlcyBPPUFtYXpvbi5jb20g\\ASW5jLiBMPVNlYXR0bGUgU1Q9V2FzaGluZ3RvbiBDPVVTMB4XDTIzMDMyMzEyNDE0\\AMloXDTQ5MTIzMTIzNTk1OVowHjEcMBoGA1UEAwwTQVdTIElvVCBDZXJ0aWZpY2F0\\AZTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMrT0KmqZTJovLoCnaaa\\A9issa0GvqIOAYqPL3J8dD8HIRQnJnDggWHvf0K23hP1Uhfwpe6IrPB9wPS2O523/\\AFzDf5O+KBVVd2VyWgNvfhzAU+1nKx9/1ktjNR4bkFozOtS4AWrTCOS4f/fq+Bx4R\\Asb+8gtjfbO6XP6sbvj+ygoN8Zm7SyLCBxBgSyCiZGWlecYhVXSpdWx2kjImYpXzG\\Atf0ltnAPuUJhQ7rcqWvh/LWnIYX1/UUlVX/sTy4fHU4o/5S3W+dKdK6JQNk4f3VQ\\AdrFeApdRk8EKlCfPZlDjZiZPsQkhpMqG3Vc3I04fA34JMfSgWGGOnl6IVjWJuVvO\\AE2MCAwEAAaNgMF4wHwYDVR0jBBgwFoAUDIXnS+v3EsBBkQLM2hzTvEJMqNAwHQYD\\AVR0OBBYEFImms3SJJei7bsV2aPqFQ9WoC9XCMAwGA1UdEwEB/wQCMAAwDgYDVR0P\\AAQH/BAQDAgeAMA0GCSqGSIb3DQEBCwUAA4IBAQDenzmAeoxlJ0yPMmPS5ceG+VmW\\A1yGY+tENA0lY5JHq4uza4UIHOlNXCWtkd53SjoT2UoTuPVN8tZb4+F2Yjjkpj/yq\\A8yEND8UyyyWiqWbOx2EXJUgdL86Mi/LQ+c7nblUOwLMw/esSqa0qS7XsxtO46xYo\\A8mB/MIMK+Uvfhn5etHXkiWjAu71guyYeF0II46O3yUxxhKNVxpclGTdmzbOzogP9\\AJYIaJ2Yw/ptCw+zjkIRi7Vlh18Hx/i2lNKOhWOADw0tXMWyCKg0KJqrcP4QG/t9Z\\AQjP2EnJSEJTuqn74i+/7mm2eE018e0SENMIzEJpC1d25huun0xh7XqnO7zxB\\A-----END CERTIFICATE-----\\A",
+    "staging_endpoint": "d01957845e3vbsmdo9am-ats.iot.us-east-2.amazonaws.com"
+  }
+}
