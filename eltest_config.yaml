@@ -43,7 +43,7 @@ feature_custom_ota: False
 # Otherwise, if False, tests that AT+CONFMODE is disabled
 feature_confmode: False
 # Tests behavior on modules with BLE available
-feature_ble: False
+feature_ble: True
 
 # BLE Configuration
 # ----
@@ -53,7 +53,7 @@ feature_ble: False
 # this device must be advertising while disconnected
 # Please set this to your device's mac address for using
 # automated bleak testing facility
-known_peer_address: 0xC5_88_39_3A_FD_1A
+known_peer_address: 0xD8_3A_DD_09_D0_45
 
 # Custom name for testing the BLE connection
 peer_name: ELTest
