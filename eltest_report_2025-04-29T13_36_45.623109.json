@@ -1,0 +1,63 @@
+{
+  "created": 1745914084.488212,
+  "duration": 62.72657227516174,
+  "exitcode": 0,
+  "root": "/home/sumaji/Test",
+  "environment": {
+    "Python": "3.11.2",
+    "Platform": "Linux-6.6.74+rpt-rpi-v8-aarch64-with-glibc2.36",
+    "Packages": {
+      "pytest": "7.3.1",
+      "pluggy": "1.0.0"
+    },
+    "Plugins": {
+      "asyncio": "0.21.1",
+      "json-report": "1.5.0",
+      "metadata": "2.0.4"
+    }
+  },
+  "summary": {
+    "passed": 1,
+    "total": 1,
+    "collected": 314,
+    "deselected": 313
+  },
+  "tests": [
+    {
+      "nodeid": "tests/test_section5.py::test_5_1_5_1_GetAnyReturnsTopicMessage",
+      "lineno": 140,
+      "outcome": "passed",
+      "keywords": [
+        "test_5_1_5_1_GetAnyReturnsTopicMessage",
+        "tests/test_section5.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 14.84124910700001,
+        "outcome": "passed",
+        "stdout": "Reseting device\n\nServer: Advertising a BLE service...\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'.........................\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'...\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_5_1_5_1_GetAnyReturnsTopicMessage\u001b[0m\n"
+      },
+      "call": {
+        "duration": 47.250788162999925,
+        "outcome": "passed",
+        "stdout": "b'Command:  AT+CONF Endpoint=a2m21kovu9tcsh-ats.iot.us-east-2.amazonaws.com\\r\\n'.....\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONNECT\\r\\n'...............................................................................................................................................................................................................................................................................................................................................................................................................................\nb'Response: OK 1 CONNECTED\\r\\n'\n\nb'Command:  AT+CONF Topic1=test_5_1_5_1_GetAnyReturnsTopicMessage2025-04-29T13:37:17.151985/1\\r\\n'....\nb'Response: OK\\r\\n'\n\nb'Command:  AT+SUBSCRIBE1\\r\\n'............\nb'Response: OK\\r\\n'\n\n\n\nb'Command:  AT+EVENT?\\r\\n'..\nb'Response: OK 8 1 SUBACK\\r\\n'\n\nReceived SUBNACK\nPolling AT+GET........\n\nb'Topic   : OK1 test_5_1_5_1_GetAnyReturnsTopicMessage2025-04-29T13:37:17.151985/1\\r\\n'\nb'Message : Hello World!\\r\\n'\nb'Command:  AT+CONF Topic2=test_5_1_5_1_GetAnyReturnsTopicMessage2025-04-29T13:37:17.151985/2\\r\\n'....\nb'Response: OK\\r\\n'\n\nb'Command:  AT+SUBSCRIBE2\\r\\n'...............................................\nb'Response: OK\\r\\n'\n\n\n\nb'Command:  AT+EVENT?\\r\\n'..\nb'Response: OK 1 1 MSG\\r\\n'\n\n\n\nb'Command:  AT+EVENT?\\r\\n'..\nb'Response: OK 8 2 SUBACK\\r\\n'\n\nReceived SUBNACK\nPolling AT+GET..\n\nb'Topic   : OK1 test_5_1_5_1_GetAnyReturnsTopicMessage2025-04-29T13:37:17.151985/2\\r\\n'\nb'Message : Hello World!\\r\\n'\nb'Command:  AT+CONF Topic3=test_5_1_5_1_GetAnyReturnsTopicMessage2025-04-29T13:37:17.151985/3\\r\\n'....\nb'Response: OK\\r\\n'\n\nb'Command:  AT+SUBSCRIBE3\\r\\n'...............................................\nb'Response: OK\\r\\n'\n\n\n\nb'Command:  AT+EVENT?\\r\\n'..\nb'Response: OK 1 2 MSG\\r\\n'\n\n\n\nb'Command:  AT+EVENT?\\r\\n'..\nb'Response: OK 8 3 SUBACK\\r\\n'\n\nReceived SUBNACK\nPolling AT+GET..\n\nb'Topic   : OK1 test_5_1_5_1_GetAnyReturnsTopicMessage2025-04-29T13:37:17.151985/3\\r\\n'\nb'Message : Hello World!\\r\\n'\n"
+      },
+      "teardown": {
+        "duration": 0.04897448999997778,
+        "outcome": "passed",
+        "stdout": "\nServer: Stopping the BLE service...\n"
+      }
+    }
+  ],
+  "expresslink_info": {
+    "platform": "raspberry_pi",
+    "test_version": "eltest-0.0.1",
+    "test_techspec": "v1.2",
+    "device_version": "1.0.0",
+    "device_techspec": "v1.2",
+    "thing_name": "silicon_labs_thing",
+    "about": "Si-Labs - SiWG917",
+    "certificate": "-----BEGIN CERTIFICATE-----\\AMIIDWTCCAkGgAwIBAgIUOWBvTtHMVup0MWDN3Z2ugpshHhYwDQYJKoZIhvcNAQEL\\ABQAwTTFLMEkGA1UECwxCQW1hem9uIFdlYiBTZXJ2aWNlcyBPPUFtYXpvbi5jb20g\\ASW5jLiBMPVNlYXR0bGUgU1Q9V2FzaGluZ3RvbiBDPVVTMB4XDTIzMDMyMzEyNDE0\\AMloXDTQ5MTIzMTIzNTk1OVowHjEcMBoGA1UEAwwTQVdTIElvVCBDZXJ0aWZpY2F0\\AZTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMrT0KmqZTJovLoCnaaa\\A9issa0GvqIOAYqPL3J8dD8HIRQnJnDggWHvf0K23hP1Uhfwpe6IrPB9wPS2O523/\\AFzDf5O+KBVVd2VyWgNvfhzAU+1nKx9/1ktjNR4bkFozOtS4AWrTCOS4f/fq+Bx4R\\Asb+8gtjfbO6XP6sbvj+ygoN8Zm7SyLCBxBgSyCiZGWlecYhVXSpdWx2kjImYpXzG\\Atf0ltnAPuUJhQ7rcqWvh/LWnIYX1/UUlVX/sTy4fHU4o/5S3W+dKdK6JQNk4f3VQ\\AdrFeApdRk8EKlCfPZlDjZiZPsQkhpMqG3Vc3I04fA34JMfSgWGGOnl6IVjWJuVvO\\AE2MCAwEAAaNgMF4wHwYDVR0jBBgwFoAUDIXnS+v3EsBBkQLM2hzTvEJMqNAwHQYD\\AVR0OBBYEFImms3SJJei7bsV2aPqFQ9WoC9XCMAwGA1UdEwEB/wQCMAAwDgYDVR0P\\AAQH/BAQDAgeAMA0GCSqGSIb3DQEBCwUAA4IBAQDenzmAeoxlJ0yPMmPS5ceG+VmW\\A1yGY+tENA0lY5JHq4uza4UIHOlNXCWtkd53SjoT2UoTuPVN8tZb4+F2Yjjkpj/yq\\A8yEND8UyyyWiqWbOx2EXJUgdL86Mi/LQ+c7nblUOwLMw/esSqa0qS7XsxtO46xYo\\A8mB/MIMK+Uvfhn5etHXkiWjAu71guyYeF0II46O3yUxxhKNVxpclGTdmzbOzogP9\\AJYIaJ2Yw/ptCw+zjkIRi7Vlh18Hx/i2lNKOhWOADw0tXMWyCKg0KJqrcP4QG/t9Z\\AQjP2EnJSEJTuqn74i+/7mm2eE018e0SENMIzEJpC1d25huun0xh7XqnO7zxB\\A-----END CERTIFICATE-----\\A",
+    "staging_endpoint": "d01957845e3vbsmdo9am-ats.iot.us-east-2.amazonaws.com"
+  }
+}

@@ -1,0 +1,391 @@
+=================================================================================================== FAILURES ====================================================================================================
+______________________________________________________________________________________ test_9_2_5_1_HotaSeekInvalidAddress ______________________________________________________________________________________
+
+iot_services_client = <botocore.client.IoT object at 0x7f92487350>
+
+    @pytest.mark.slow
+    def test_9_2_5_1_HotaSeekInvalidAddress(
+            iot_services_client: IoTClient) -> None:
+        _CleanOtaJobs(iot_services_client)
+        assert cmd('AT+CONF HOTAcertificate=\r\n') == 'OK\r\n'
+        assert cmd('AT+OTA FLUSH\r\n') == 'OK\r\n'
+        assert _getOTAStatus()[0] == _OtaCode.NoOtaInProgress
+
+        assert connect_with_retries(cf.get('personal_endpoint', str))
+
+        hotaUploaded, otaJob, _ = _ConfigureHostOTA(iot_services_client,
+                                                    sign=False)
+
+        with otaJob:
+            # Wait for OTA event to arrive at device
+            if get_next_event(r'^OK 5.*OTA\r\n$') is None:
+                warnings.warn('OTA Event was not raised', RuntimeWarning)
+            assert _getOTAStatus()[0] == _OtaCode.HostOtaUpdateAvailable
+
+            assert cmd('AT+OTA ACCEPT\r\n') == 'OK\r\n'
+            assert _pollDeviceOtaStatus(
+                desiredCode=_OtaCode.OtaInProgress,
+                allowedCodes=(_OtaCode.HostOtaUpdateAvailable, ),
+                step=0.01,
+                timeout=10)
+
+            # Wait for OTA download to finish
+            if get_next_event(r'^OK 5.*OTA\r\n$', timeout=600) is None:
+                warnings.warn('OTA Event was not raised', RuntimeWarning)
+            assert _pollDeviceOtaStatus(desiredCode=_OtaCode.HostOtaImageReady,
+                                        allowedCodes=(_OtaCode.OtaInProgress, ),
+                                        step=0.01,
+                                        timeout=10)
+
+>           assert cmd(f'AT+OTA SEEK {len(hotaUploaded) + 1}\r\n'
+                       ) == 'ERR20 INVALID ADDRESS\r\n'
+E           AssertionError: assert 'OK 1001\r\n' == 'ERR20 INVALID ADDRESS\r\n'
+E             - ERR20 INVALID ADDRESS
+E             + OK 1001
+
+tests/test_section9.py:722: AssertionError
+_________________________________________________________________________________________ test_9_2_8_OtaFlushAllStates __________________________________________________________________________________________
+
+iot_services_client = <botocore.client.IoT object at 0x7f904745d0>
+
+    @pytest.mark.slow
+    # TODO: Support custom flows
+    @pytest.mark.skipif(cf.get('feature_custom_ota', bool),
+                        reason='Custom OTA flow')
+    def test_9_2_8_OtaFlushAllStates(iot_services_client: IoTClient) -> None:
+        _CleanOtaJobs(iot_services_client)
+        assert cmd('AT+OTA FLUSH\r\n') == 'OK\r\n'
+        assert _getOTAStatus()[0] == _OtaCode.NoOtaInProgress
+
+        def checkedFlush(awsIotJobId: str):
+            assert cmd('AT+OTA FLUSH\r\n') == 'OK\r\n'
+            assert _WaitForJobCompletion(
+                iot_services_client,
+                awsIotJobId)['execution']['status'] not in ('QUEUED', 'SUCCEEDED',
+                                                            'IN_PROGRESS')
+            assert _getOTAStatus()[0] == _OtaCode.NoOtaInProgress
+
+        connect_with_retries(cf.get('personal_endpoint', str))
+
+        for testState in (_OtaCode.OtaUpdateAvailable, _OtaCode.OtaInProgress,
+                          _OtaCode.OtaImageReady):
+            with _ConfigureModuleOTA(iot_services_client) as otaJob:
+                # Wait for OTA event to arrive at device
+                if get_next_event(r'^OK 5 [^0]+ OTA\r\n$') is None:
+                    warnings.warn('OTA Event was not raised', RuntimeWarning)
+                assert _getOTAStatus()[0] == _OtaCode.OtaUpdateAvailable
+
+                if testState == _OtaCode.OtaUpdateAvailable:
+                    checkedFlush(otaJob.otaJobResponse['awsIotJobId'])
+                    otaJob.cleanup = False
+                    continue
+
+                # Accept OTA, see that it starts
+                assert cmd('AT+OTA ACCEPT\r\n') == 'OK\r\n', 'Fails '
+                assert _pollDeviceOtaStatus(
+                    desiredCode=_OtaCode.OtaInProgress,
+                    allowedCodes=(_OtaCode.OtaUpdateAvailable, ),
+                    step=0.01,
+                    timeout=10)
+
+                if testState == _OtaCode.OtaInProgress:
+                    time.sleep(5)
+                    checkedFlush(otaJob.otaJobResponse['awsIotJobId'])
+                    otaJob.cleanup = False
+                    continue
+
+                # Wait for device to download binary and ready to apply
+                if get_next_event(r'^OK 5.*OTA\r\n$', timeout=600) is None:
+                    warnings.warn('OTA Event was not raised', RuntimeWarning)
+>               assert _pollDeviceOtaStatus(
+                    desiredCode=_OtaCode.OtaImageReady,
+                    allowedCodes=(_OtaCode.OtaInProgress, ),
+                    step=0.01,
+                    timeout=10)
+
+tests/test_section9.py:848:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests/test_section9.py:334: in _pollDeviceOtaStatus
+    return poll(_getOTAStatus,
+venv/lib/python3.11/site-packages/polling.py:112: in poll
+    if check_success(val):
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+step = (<_OtaCode.NoOtaInProgress: 0>, None)
+
+    def validateStep(step: Tuple[_OtaCode, Optional[str]]):
+        if step[0] == desiredCode:
+            return True
+>       assert step[0] in allowedCodes, "Unexpected OTA state change"
+E       AssertionError: Unexpected OTA state change
+E       assert <_OtaCode.NoOtaInProgress: 0> in (<_OtaCode.OtaInProgress: 3>,)
+
+tests/test_section9.py:331: AssertionError
+_____________________________________________________________________________________ test_9_6_1_1_OtaCertificateSelfAssign _____________________________________________________________________________________
+
+    def test_9_6_1_1_OtaCertificateSelfAssign() -> None:
+        """Demonstrates that a self-signed certificate may be reflexively assigned"""
+        certificate = open(cf.get('ota_certificate_path', str),
+                           'rt').read().replace('\n', '\r\n')
+        response = _SetCertificatePem('OTAcertificate', certificate)
+>       assert response == 'OK\r\n'
+E       assert 'assertion "r...aCertUpdate\n' == 'OK\r\n'
+E         - OK
+E         + assertion "result" failed: file "C:/Users/sumaji/Downloads/Sdk release/simplicity_sdk_2024.12.0_rc3/extension/wifi_internal_sqa/third_party/amazon_expresslink_sdk/libraries/expresslink_core/src/conf/certs.c", line 56, function: isValidOtaCertUpdate
+
+tests/test_section9.py:1070: AssertionError
+__________________________________________________________________________________ test_9_6_1_2_OtaCertificateInvalidSignature __________________________________________________________________________________
+
+    def test_9_6_1_2_OtaCertificateInvalidSignature() -> None:
+        """Try setting OTA cert to a cert not self-signed for OTA
+           May overwrite the OTA cert with the RootCA..."""
+        certificate = open('AmazonRootCA1.pem', 'rt').read().replace('\n', '\r\n')
+>       response = _SetCertificatePem('OTAcertificate', certificate)
+
+tests/test_section9.py:1078:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests/test_section9.py:1407: in _SetCertificatePem
+    return cmd(f'AT+CONF {key}={pem}\r\n{certificate}\r\n')
+tests/commands.py:33: in cmd
+    poll(check_response, step=0.01, timeout=timeout)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+target = <function cmd.<locals>.check_response at 0x7f905c2340>, step = 0.01, args = (), kwargs = {}, timeout = 120, max_tries = None, check_success = <function is_truthy at 0x7f94a42700>
+step_function = <function step_constant at 0x7f949e2480>, ignore_exceptions = (), poll_forever = False, collect_values = None, a = (), k = {}, values = <queue.Queue object at 0x7f905fa890>
+max_time = 1737353900.3389516, tries = 5920, last_item = False, val = False
+
+    def poll(target, step, args=(), kwargs=None, timeout=None, max_tries=None, check_success=is_truthy,
+             step_function=step_constant, ignore_exceptions=(), poll_forever=False, collect_values=None, *a, **k):
+        """Poll by calling a target function until a certain condition is met. You must specify at least a target
+        function to be called and the step -- base wait time between each function call.
+
+        :param step: Step defines the amount of time to wait (in seconds)
+        :param args: Arguments to be passed to the target function
+        :type kwargs: dict
+        :param kwargs: Keyword arguments to be passed to the target function
+        :param timeout: The target function will be called until the time elapsed is greater than the maximum timeout
+        (in seconds). NOTE that the actual execution time of the function *can* exceed the time specified in the timeout.
+        For instance, if the target function takes 10 seconds to execute and the timeout is 21 seconds, the polling
+        function will take a total of 30 seconds (two iterations of the target --20s which is less than the timeout--21s,
+        and a final iteration)
+        :param max_tries: Maximum number of times the target function will be called before failing
+        :param check_success: A callback function that accepts the return value of the target function. It should
+        return true if you want the polling function to stop and return this value. It should return false if you want it
+        to continue executing. The default is a callback that tests for truthiness (anything not False, 0, or empty
+        collection).
+        :param step_function: A callback function that accepts each iteration's "step." By default, this is constant,
+        but you can also pass a function that will increase or decrease the step. As an example, you can increase the wait
+        time between calling the target function by 10 seconds every iteration until the step is 100 seconds--at which
+        point it should remain constant at 100 seconds
+
+        >>> def my_step_function(step):
+        >>>     step += 10
+        >>>     return max(step, 100)
+
+        :type ignore_exceptions: tuple
+        :param ignore_exceptions: You can specify a tuple of exceptions that should be caught and ignored on every
+        iteration. If the target function raises one of these exceptions, it will be caught and the exception
+        instance will be pushed to the queue of values collected during polling. Any other exceptions raised will be
+        raised as normal.
+        :param poll_forever: If set to true, this function will retry until an exception is raised or the target's
+        return value satisfies the check_success function. If this is not set, then a timeout or a max_tries must be set.
+        :type collect_values: Queue
+        :param collect_values: By default, polling will create a new Queue to store all of the target's return values.
+        Optionally, you can specify your own queue to collect these values for access to it outside of function scope.
+        :return: Polling will return first value from the target function that meets the condions of the check_success
+        callback. By default, this will be the first value that is not None, 0, False, '', or an empty collection.
+        """
+
+        assert (timeout is not None or max_tries is not None) or poll_forever, \
+            ('You did not specify a maximum number of tries or a timeout. Without either of these set, the polling '
+             'function will poll forever. If this is the behavior you want, pass "poll_forever=True"')
+
+        assert not ((timeout is not None or max_tries is not None) and poll_forever), \
+            'You cannot specify both the option to poll_forever and max_tries/timeout.'
+
+        kwargs = kwargs or dict()
+        values = collect_values or Queue()
+
+        max_time = time.time() + timeout if timeout else None
+        tries = 0
+
+        last_item = None
+        while True:
+
+            if max_tries is not None and tries >= max_tries:
+                raise MaxCallException(values, last_item)
+
+            try:
+                val = target(*args, **kwargs)
+                last_item = val
+            except ignore_exceptions as e:
+                last_item = e
+            else:
+                # Condition passes, this is the only "successful" exit from the polling function
+                if check_success(val):
+                    return val
+
+            values.put(last_item)
+            tries += 1
+
+            # Check the time after to make sure the poll function is called at least once
+            if max_time is not None and time.time() >= max_time:
+>               raise TimeoutException(values, last_item)
+E               polling.TimeoutException: (<queue.Queue object at 0x7f905fa890>, False)
+
+venv/lib/python3.11/site-packages/polling.py:120: TimeoutException
+_______________________________________________________________________________ test_9_6_1_6_OtaCertificateSetInvalidCertificate ________________________________________________________________________________
+
+    def test_9_6_1_6_OtaCertificateSetInvalidCertificate() -> None:
+        """This test may irreversibly destroy the OTA certificate if overwritten"""
+        invalidCert = '-----BEGIN CERTIFICATE-----\r\n' + (
+            'a' * 1024) + '\r\n-----END CERTIFICATE-----\r\n'
+        response = _SetCertificatePem('OTAcertificate', invalidCert)
+>       assert response == 'ERR26 INVALID CERTIFICATE\r\n'
+E       assert 'assertion "r...aCertUpdate\n' == 'ERR26 INVALI...RTIFICATE\r\n'
+E         - ERR26 INVALID CERTIFICATE
+E         + assertion "result" failed: file "C:/Users/sumaji/Downloads/Sdk release/simplicity_sdk_2024.12.0_rc3/extension/wifi_internal_sqa/third_party/amazon_expresslink_sdk/libraries/expresslink_core/src/conf/certs.c", line 56, function: isValidOtaCertUpdate
+
+tests/test_section9.py:1115: AssertionError
+______________________________________________________________________________________ test_9_10_HostUpdateInvalidSigning _______________________________________________________________________________________
+
+iot_services_client = <botocore.client.IoT object at 0x7f9025b510>
+
+    @pytest.mark.slow
+    def test_9_10_HostUpdateInvalidSigning(iot_services_client: IoTClient) -> None:
+        # It is impossible for the OTA service account to sign an HOTA binary
+        # with this Root CA
+        root_certificate = open('AmazonRootCA1.pem',
+                                'rt').read().replace('\n', '\r\n')
+>       assert cmd(
+            f'AT+CONF HOTAcertificate=pem\r\n{root_certificate}\r\n') == 'OK\r\n'
+
+tests/test_section9.py:1220:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests/commands.py:33: in cmd
+    poll(check_response, step=0.01, timeout=timeout)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+target = <function cmd.<locals>.check_response at 0x7f9050ff60>, step = 0.01, args = (), kwargs = {}, timeout = 120, max_tries = None, check_success = <function is_truthy at 0x7f94a42700>
+step_function = <function step_constant at 0x7f949e2480>, ignore_exceptions = (), poll_forever = False, collect_values = None, a = (), k = {}, values = <queue.Queue object at 0x7f90521c10>
+max_time = 1737354088.303407, tries = 5920, last_item = False, val = False
+
+    def poll(target, step, args=(), kwargs=None, timeout=None, max_tries=None, check_success=is_truthy,
+             step_function=step_constant, ignore_exceptions=(), poll_forever=False, collect_values=None, *a, **k):
+        """Poll by calling a target function until a certain condition is met. You must specify at least a target
+        function to be called and the step -- base wait time between each function call.
+
+        :param step: Step defines the amount of time to wait (in seconds)
+        :param args: Arguments to be passed to the target function
+        :type kwargs: dict
+        :param kwargs: Keyword arguments to be passed to the target function
+        :param timeout: The target function will be called until the time elapsed is greater than the maximum timeout
+        (in seconds). NOTE that the actual execution time of the function *can* exceed the time specified in the timeout.
+        For instance, if the target function takes 10 seconds to execute and the timeout is 21 seconds, the polling
+        function will take a total of 30 seconds (two iterations of the target --20s which is less than the timeout--21s,
+        and a final iteration)
+        :param max_tries: Maximum number of times the target function will be called before failing
+        :param check_success: A callback function that accepts the return value of the target function. It should
+        return true if you want the polling function to stop and return this value. It should return false if you want it
+        to continue executing. The default is a callback that tests for truthiness (anything not False, 0, or empty
+        collection).
+        :param step_function: A callback function that accepts each iteration's "step." By default, this is constant,
+        but you can also pass a function that will increase or decrease the step. As an example, you can increase the wait
+        time between calling the target function by 10 seconds every iteration until the step is 100 seconds--at which
+        point it should remain constant at 100 seconds
+
+        >>> def my_step_function(step):
+        >>>     step += 10
+        >>>     return max(step, 100)
+
+        :type ignore_exceptions: tuple
+        :param ignore_exceptions: You can specify a tuple of exceptions that should be caught and ignored on every
+        iteration. If the target function raises one of these exceptions, it will be caught and the exception
+        instance will be pushed to the queue of values collected during polling. Any other exceptions raised will be
+        raised as normal.
+        :param poll_forever: If set to true, this function will retry until an exception is raised or the target's
+        return value satisfies the check_success function. If this is not set, then a timeout or a max_tries must be set.
+        :type collect_values: Queue
+        :param collect_values: By default, polling will create a new Queue to store all of the target's return values.
+        Optionally, you can specify your own queue to collect these values for access to it outside of function scope.
+        :return: Polling will return first value from the target function that meets the condions of the check_success
+        callback. By default, this will be the first value that is not None, 0, False, '', or an empty collection.
+        """
+
+        assert (timeout is not None or max_tries is not None) or poll_forever, \
+            ('You did not specify a maximum number of tries or a timeout. Without either of these set, the polling '
+             'function will poll forever. If this is the behavior you want, pass "poll_forever=True"')
+
+        assert not ((timeout is not None or max_tries is not None) and poll_forever), \
+            'You cannot specify both the option to poll_forever and max_tries/timeout.'
+
+        kwargs = kwargs or dict()
+        values = collect_values or Queue()
+
+        max_time = time.time() + timeout if timeout else None
+        tries = 0
+
+        last_item = None
+        while True:
+
+            if max_tries is not None and tries >= max_tries:
+                raise MaxCallException(values, last_item)
+
+            try:
+                val = target(*args, **kwargs)
+                last_item = val
+            except ignore_exceptions as e:
+                last_item = e
+            else:
+                # Condition passes, this is the only "successful" exit from the polling function
+                if check_success(val):
+                    return val
+
+            values.put(last_item)
+            tries += 1
+
+            # Check the time after to make sure the poll function is called at least once
+            if max_time is not None and time.time() >= max_time:
+>               raise TimeoutException(values, last_item)
+E               polling.TimeoutException: (<queue.Queue object at 0x7f90521c10>, False)
+
+venv/lib/python3.11/site-packages/polling.py:120: TimeoutException
+______________________________________________________________________________________ test_9_11_1_1_OtaCertificateGetPem _______________________________________________________________________________________
+
+    def test_9_11_1_1_OtaCertificateGetPem() -> None:
+        # Field empty after factory reset, so provision device...
+        assert _GetCertificatePem('HOTAcertificate') == ''
+        certificate = open(cf.get('ota_certificate_path', str)).read()
+        if '\r\n' not in certificate:
+            certificate = certificate.replace('\n', '\r\n').replace(r'\A', '\r\n')
+        assert cmd(f'AT+CONF HOTAcertificate=pem\r\n{certificate}') == 'OK\r\n'
+
+        # For all certs, check that they cleanly return a certificate
+        # Compare output against the escaped format
+        keys: list[_CertificateKey] = ['HOTAcertificate', 'Certificate', 'RootCA']
+        for key in keys:
+            # Test that getting certificate is clean
+            pem: str = _GetCertificatePem(key)
+            linesPem: list[str] = pem.split('\r\n')
+            # test that each line of the output is identical to the default, escaped format
+            linesEscaped: list[str] = cmd(f'AT+CONF? {key}\r\n')[3:-2].split(r'\A')
+>           assert linesPem == linesEscaped, f'Output mismatch for {key} pem and non-pem'
+E           AssertionError: Output mismatch for RootCA pem and non-pem
+E           assert ['-----BEGIN ...3RhcmZp', ...] == ['-----BEGIN ...3RhcmZp', ...]
+E             Left contains one more item: ''
+E             Use -v to get more diff
+
+tests/test_section9.py:1381: AssertionError
+-------------------------------------------------------------------------------------------------- JSON report --------------------------------------------------------------------------------------------------
+report saved to: ./eltest_report_2025-01-20T00_06_26.380331.json
+============================================================================================ short test summary info ============================================================================================
+FAILED tests/test_section9.py::test_9_2_5_1_HotaSeekInvalidAddress - AssertionError: assert 'OK 1001\r\n' == 'ERR20 INVALID ADDRESS\r\n'
+FAILED tests/test_section9.py::test_9_2_8_OtaFlushAllStates - AssertionError: Unexpected OTA state change
+FAILED tests/test_section9.py::test_9_6_1_1_OtaCertificateSelfAssign - assert 'assertion "r...aCertUpdate\n' == 'OK\r\n'
+FAILED tests/test_section9.py::test_9_6_1_2_OtaCertificateInvalidSignature - polling.TimeoutException: (<queue.Queue object at 0x7f905fa890>, False)
+FAILED tests/test_section9.py::test_9_6_1_6_OtaCertificateSetInvalidCertificate - assert 'assertion "r...aCertUpdate\n' == 'ERR26 INVALI...RTIFICATE\r\n'
+FAILED tests/test_section9.py::test_9_10_HostUpdateInvalidSigning - polling.TimeoutException: (<queue.Queue object at 0x7f90521c10>, False)
+FAILED tests/test_section9.py::test_9_11_1_1_OtaCertificateGetPem - AssertionError: Output mismatch for RootCA pem and non-pem
+====================================================================== 7 failed, 13 passed, 1 skipped, 293 deselected in 957.88s (0:15:57) ======================================================================
+Cleaning up
+Success

@@ -1,0 +1,86 @@
+{
+  "created": 1745908283.8051941,
+  "duration": 180.9022355079651,
+  "exitcode": 1,
+  "root": "/home/sumaji/Test",
+  "environment": {
+    "Python": "3.11.2",
+    "Platform": "Linux-6.6.74+rpt-rpi-v8-aarch64-with-glibc2.36",
+    "Packages": {
+      "pytest": "7.3.1",
+      "pluggy": "1.0.0"
+    },
+    "Plugins": {
+      "asyncio": "0.21.1",
+      "json-report": "1.5.0",
+      "metadata": "2.0.4"
+    }
+  },
+  "summary": {
+    "failed": 1,
+    "total": 1,
+    "collected": 314,
+    "deselected": 313
+  },
+  "tests": [
+    {
+      "nodeid": "tests/test_section5.py::test_5_1_5_1_GetAnyReturnsTopicMessage",
+      "lineno": 140,
+      "outcome": "failed",
+      "keywords": [
+        "test_5_1_5_1_GetAnyReturnsTopicMessage",
+        "tests/test_section5.py",
+        "Test"
+      ],
+      "setup": {
+        "duration": 13.977096829999937,
+        "outcome": "passed",
+        "stdout": "Reseting device\n\nServer: Advertising a BLE service...\nDone\nb'Command:  AT\\r\\n'..\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF SSID=WIFISDKroam\\r\\n'...\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONF Passphrase=wifisdk@2022\\r\\n'...\nb'Response: OK\\r\\n'\n\n\u001b[96mExecuting test: \u001b[92mtest_5_1_5_1_GetAnyReturnsTopicMessage\u001b[0m\n"
+      },
+      "call": {
+        "duration": 166.14763365899944,
+        "outcome": "failed",
+        "crash": {
+          "path": "/home/sumaji/Test/tests/test_section5.py",
+          "lineno": 26,
+          "message": "Failed: Suback event not generated"
+        },
+        "traceback": [
+          {
+            "path": "tests/test_section5.py",
+            "lineno": 167,
+            "message": ""
+          },
+          {
+            "path": "venv/lib/python3.11/site-packages/polling.py",
+            "lineno": 106,
+            "message": "in poll"
+          },
+          {
+            "path": "tests/test_section5.py",
+            "lineno": 26,
+            "message": "Failed"
+          }
+        ],
+        "stdout": "b'Command:  AT+CONF Endpoint=a2m21kovu9tcsh-ats.iot.us-east-2.amazonaws.com\\r\\n'..........................\nb'Response: OK\\r\\n'\n\nb'Command:  AT+CONNECT\\r\\n'...........................................................................................................................................................................................\nb'Response: ERR14 2 UNABLE TO CONNECT Failed to access network\\r\\n'\n\nb'Command:  AT+CONNECT\\r\\n'.............................................................................................................................................................................................................................................................................................................................................................................................................................................\nb'Response: OK 1 CONNECTED\\r\\n'\n\nb'Command:  AT+CONF Topic1=test_5_1_5_1_GetAnyReturnsTopicMessage2025-04-29T11:58:37.450292/1\\r\\n'....\nb'Response: OK\\r\\n'\n\nb'Command:  AT+SUBSCRIBE1\\r\\n'............\nb'Response: OK\\r\\n'\n\n\n\nb'Command:  AT+EVENT?\\r\\n'..\nb'Response: OK 8 1 SUBACK\\r\\n'\n\nReceived SUBNACK\nPolling AT+GET...\n\nb'Topic   : OK1 test_5_1_5_1_GetAnyReturnsTopicMessage2025-04-29T11:58:37.450292/1\\r\\n'\nb'Message : Hello World!\\r\\n'\nb'Command:  AT+CONF Topic2=test_5_1_5_1_GetAnyReturnsTopicMessage2025-04-29T11:58:37.450292/2\\r\\n'....\nb'Response: OK\\r\\n'\n\nb'Command:  AT+SUBSCRIBE2\\r\\n'................................................\nb'Response: OK\\r\\n'\n\n\n\nb'Command:  AT+EVENT?\\r\\n'..........................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................Timed out while waiting for an event to match: ^OK \\d+ \\d+ SUBN?ACK\\r\\n$\n",
+        "longrepr": "get_topic_prefix = 'test_5_1_5_1_GetAnyReturnsTopicMessage2025-04-29T11:58:37.450292'\niot_client = <botocore.client.IoTDataPlane object at 0x7f8bad85d0>\n\n    def test_5_1_5_1_GetAnyReturnsTopicMessage(get_topic_prefix: str,\n                                               iot_client: IoTDataPlaneClient):\n        assert connect_with_retries(cf.get('personal_endpoint', str))\n    \n        def get_any() -> str:\n            response: str = cmd('AT+GET\\r\\n', print_output=False)\n            if response == 'OK\\r\\n':\n                message_received: str = ''\n                print(end='.', flush=True)\n            else:\n                print(end='\\n\\n')\n                print((f'Topic   : {response}').encode('iso_8859_1'))\n                assert get_topic_prefix in response\n                # AT+GET returns two lines of output\n                message_received = cmd('', print_output=False)\n                print((f'Message : {message_received}').encode('iso_8859_1'))\n            return message_received\n    \n        # send a message on 3 different topics.\n        # AT+GET receives the message on all topics.\n        message_sent: str = 'Hello World!'\n        for i in range(1, 4):\n            topic: str = f'{get_topic_prefix}/{i}'\n            assert cmd(f'AT+CONF Topic{i}={topic}\\r\\n') == 'OK\\r\\n'\n    \n            try:\n>               poll(_attempt_subscribe,\n                     timeout=30,\n                     step=0,\n                     kwargs={'topic_number': i})\n\ntests/test_section5.py:167: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \nvenv/lib/python3.11/site-packages/polling.py:106: in poll\n    val = target(*args, **kwargs)\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\ntopic_number = 2\n\n    def _attempt_subscribe(topic_number: int = 1) -> bool:\n        \"\"\"Subscribes to Topic{i} and waits for a SUBACK/SUBNACK\"\"\"\n        assert cmd(f'AT+SUBSCRIBE{topic_number}\\r\\n') == 'OK\\r\\n'\n        event = get_next_event(r'^OK \\d+ \\d+ SUBN?ACK\\r\\n$')\n        if not event:\n>           pytest.fail('Suback event not generated')\nE           Failed: Suback event not generated\n\ntests/test_section5.py:26: Failed"
+      },
+      "teardown": {
+        "duration": 0.003052625999771408,
+        "outcome": "passed",
+        "stdout": "\nServer: Stopping the BLE service...\n"
+      }
+    }
+  ],
+  "expresslink_info": {
+    "platform": "raspberry_pi",
+    "test_version": "eltest-0.0.1",
+    "test_techspec": "v1.2",
+    "device_version": "1.0.0",
+    "device_techspec": "v1.2",
+    "thing_name": "silicon_labs_thing",
+    "about": "Si-Labs - SiWG917",
+    "certificate": "-----BEGIN CERTIFICATE-----\\AMIIDWTCCAkGgAwIBAgIUOWBvTtHMVup0MWDN3Z2ugpshHhYwDQYJKoZIhvcNAQEL\\ABQAwTTFLMEkGA1UECwxCQW1hem9uIFdlYiBTZXJ2aWNlcyBPPUFtYXpvbi5jb20g\\ASW5jLiBMPVNlYXR0bGUgU1Q9V2FzaGluZ3RvbiBDPVVTMB4XDTIzMDMyMzEyNDE0\\AMloXDTQ5MTIzMTIzNTk1OVowHjEcMBoGA1UEAwwTQVdTIElvVCBDZXJ0aWZpY2F0\\AZTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMrT0KmqZTJovLoCnaaa\\A9issa0GvqIOAYqPL3J8dD8HIRQnJnDggWHvf0K23hP1Uhfwpe6IrPB9wPS2O523/\\AFzDf5O+KBVVd2VyWgNvfhzAU+1nKx9/1ktjNR4bkFozOtS4AWrTCOS4f/fq+Bx4R\\Asb+8gtjfbO6XP6sbvj+ygoN8Zm7SyLCBxBgSyCiZGWlecYhVXSpdWx2kjImYpXzG\\Atf0ltnAPuUJhQ7rcqWvh/LWnIYX1/UUlVX/sTy4fHU4o/5S3W+dKdK6JQNk4f3VQ\\AdrFeApdRk8EKlCfPZlDjZiZPsQkhpMqG3Vc3I04fA34JMfSgWGGOnl6IVjWJuVvO\\AE2MCAwEAAaNgMF4wHwYDVR0jBBgwFoAUDIXnS+v3EsBBkQLM2hzTvEJMqNAwHQYD\\AVR0OBBYEFImms3SJJei7bsV2aPqFQ9WoC9XCMAwGA1UdEwEB/wQCMAAwDgYDVR0P\\AAQH/BAQDAgeAMA0GCSqGSIb3DQEBCwUAA4IBAQDenzmAeoxlJ0yPMmPS5ceG+VmW\\A1yGY+tENA0lY5JHq4uza4UIHOlNXCWtkd53SjoT2UoTuPVN8tZb4+F2Yjjkpj/yq\\A8yEND8UyyyWiqWbOx2EXJUgdL86Mi/LQ+c7nblUOwLMw/esSqa0qS7XsxtO46xYo\\A8mB/MIMK+Uvfhn5etHXkiWjAu71guyYeF0II46O3yUxxhKNVxpclGTdmzbOzogP9\\AJYIaJ2Yw/ptCw+zjkIRi7Vlh18Hx/i2lNKOhWOADw0tXMWyCKg0KJqrcP4QG/t9Z\\AQjP2EnJSEJTuqn74i+/7mm2eE018e0SENMIzEJpC1d25huun0xh7XqnO7zxB\\A-----END CERTIFICATE-----\\A",
+    "staging_endpoint": "d01957845e3vbsmdo9am-ats.iot.us-east-2.amazonaws.com"
+  }
+}
